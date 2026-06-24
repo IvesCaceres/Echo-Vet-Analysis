@@ -58,11 +58,13 @@ CANONICOS_DIAG: dict[str, list[str]] = {
     "pielectasia":           ["pielectasia"],
     "hidronefrosis":         ["hidronefrosis"],
     "ectasia_pelvica":       ["ectasia pélvica", "ectasia pelvica"],
-    "dilatacion_ureteral":   ["dilatación ureteral", "dilatacion ureteral"],
+    "dilatacion_ureteral":   ["dilatación ureteral", "dilatacion ureteral",
+                              "dilatación uretral", "dilatacion uretral"],
     # HEPATICA
     "hepatomegalia":         ["hepatomegalia"],
     "microhepatia":          ["microhepatia"],
-    "hepatopatia":           ["hepatopatía", "hepatopatia"],
+    "hepatopatia":           ["hepatopatía", "hepatopatia",
+                              "cambios hepáticos", "cambios hepaticos"],
     "hepatopatia_vacuolar":  ["hepatopatía vacuolar", "hepatopatia vacuolar"],
     "higado_graso":          ["hígado graso", "higado graso",
                               "infiltración grasa", "infiltracion grasa"],
@@ -73,25 +75,51 @@ CANONICOS_DIAG: dict[str, list[str]] = {
     "esplenomegalia":        ["esplenomegalia"],
     "nodulo_esplenico":      ["nódulo esplénico", "nodulo esplenico"],
     "hematoma_esplenico":    ["hematoma esplénico"],
+    "mielolipoma_esplenico": ["mielolipoma esplénico", "mielo lipoma esplénico"],  # F5.1
     # GASTROINTESTINAL
     "gastritis":             ["gastritis"],
     "gastropatia":           ["gastropatía", "gastropatia"],
     "enteritis":             ["enteritis"],
-    "enterocolitis":         ["enterocolitis"],
+    "enterocolitis":         ["enterocolitis", "gastroenterocolitis"],  # F5.1
     "colitis":               ["colitis"],
     "ileitis":               ["ileítis", "ileitis"],
+    "ileo":                  ["íleo", "ileo", "ilio"],  # F5.1 (incluye typo "ilio")
+    "cuerpo_extrano":        ["cuerpo extraño", "cuerpos extraños",
+                              "cuerpos extraño"],  # F5.1 (último: typo frecuente)
+    "distension_gastrica":   ["distensión gástrica", "distención gástrica",
+                              "dilatación gástrica", "distensión estomacal",
+                              "distención estomacal"],  # F5.1
+    "distension_intestinal": ["distensión intestinal", "distención intestinal",
+                              "dilatación intestinal", "dilatación entérica",
+                              "intestino delgado"],  # F5.1
+    "distension_colonica":   ["distensión colónica", "distención colónica"],  # F5.1
+    "distension_gastrointestinal": ["distensión gastrointestinal",
+                                     "distención gastrointestinal",
+                                     "distensión gastro intestinal",
+                                     "distención gastro intestinal",
+                                     "distensión gastro entérica"],  # F5.1
+    "tiflitis":              ["tiflitis"],  # F5.1
+    "ulcera_intestinal":     ["úlcera intestinal", "ulcera intestinal",
+                              "úlceras intestinales", "ulceras intestinales"],  # F5.1
     # PANCREAS
     "pancreatitis":          ["pancreatitis"],
-    "cambios_pancreaticos":  ["cambios pancreáticos", "cambios pancreaticos"],
+    "cambios_pancreaticos":  ["cambios pancreáticos", "cambios pancreaticos",
+                              "cambios en páncreas", "cambios en pancreas"],  # F5.1
     # VESICULA
     "colecistitis":          ["colecistitis", "colicistitis"],
     "barro_biliar":          ["barro biliar"],
     "sedimento_biliar":      ["sedimento biliar"],
     "colelitiasis":          ["colelitiasis"],
     # VEJIGA Y URINARIO
-    "cistitis":              ["cistitis"],
-    "cistolito":             ["cistolito", "cálculo vesical", "calculo vesical"],
-    "sedimento_vejiga":      ["sedimento en vejiga", "sedimento vesical"],
+    "cistitis":              ["cistitis", "proceso inflamatorio en vejiga"],  # F5.1
+    "cistolito":             ["cistolito", "cálculo vesical", "calculo vesical",
+                              "lito vesical", "lito en vejiga",
+                              "cálculo en vejiga", "calculo en vejiga"],  # F5.1
+    "sedimento_vejiga":      ["sedimento en vejiga", "sedimento vesical",
+                              "sedimento leve en vejiga",
+                              "sedimento abundante en vejiga",
+                              "sedimento moderado en vejiga",
+                              "sedimento y litos"],  # F5.1
     "urolitiasis":           ["urolitiasis"],
     # REPRODUCTIVO
     "histeromegalia":        ["histeromegalia"],
@@ -100,18 +128,42 @@ CANONICOS_DIAG: dict[str, list[str]] = {
     "hemometra":             ["hemometra"],
     "prostatomegalia":       ["prostatomegalia"],
     "prostatitis":           ["prostatitis"],
-    "hiperplasia_prostatica": ["hiperplasia prostática"],
+    "hiperplasia_prostatica": ["hiperplasia prostática",
+                               "cambios prostáticos hiperplásicos",
+                               "cambios prostaticos hiperplasicos",
+                               "proceso hiperplásico"],  # F5.1
     "quiste_ovarico":        ["quiste ovárico", "quiste ovarico"],
+    "ovario_poliquistico":   ["ovario poliquístico", "ovario poliquistico",
+                              "ovarios poliquísticos",
+                              "ovarios poliquisticos"],  # F5.1
+    "remanente_ovarico":     ["remanente ovárico", "remanente ovarico"],  # F5.1
+    "actividad_estral":      ["actividad estral", "proestro", "estro"],  # F5.1
+    "criptorquidismo":       ["criptorquidia", "criptorquidismo",
+                              "criptorquidismos", "criptorquídico",
+                              "criptorquidica", "criptórquido", "criptorquidos",
+                              "criptórquidos", "criptorquida", "criptorquidas",
+                              "testículo retenido", "testículo intra abdominal",
+                              "testículos intra abdominal",
+                              "testículo izquierdo retenido",
+                              "testículo derecho retenido",
+                              "testículo izquierdo intra abdominal",
+                              "testículo derecho intra abdominal",
+                              "testículos criptórquidos",
+                              "testículo criptórquido"],  # F5.1
     "gestacion":             ["gestación", "gestacion", "preñez", "embarazo"],
     # ADRENALES
     "adrenomegalia":         ["adrenomegalia", "adrenalomegalia"],
+    # ENDOCRINO (F5.1)
+    "cambios_tiroideos":     ["cambios tiroideos", "cambio tiroideo"],  # F5.1
     # LINFATICO
     "linfadenomegalia":      ["linfadenomegalia", "linfoadenopatía",
-                              "linfoadenopatia"],
+                              "linfoadenopatia", "linfonodopatía",
+                              "linfonodopatia"],  # F5.1
     # PERITONEO
     "peritonitis":           ["peritonitis"],
     "derrame_peritoneal":    ["derrame peritoneal", "líquido libre",
                               "liquido libre", "ascitis"],
+    "derrame_pleural":       ["derrame pleural"],  # F5.1
     # OTROS
     "neoplasia":             ["neoplasia", "neoplasias"],
     "neoplasico":            ["neoplásico", "neoplasico", "neoproliferativo"],
@@ -128,6 +180,9 @@ CANONICOS_DIAG: dict[str, list[str]] = {
     "hiperplasia":           ["hiperplasia"],
     "atrofia":               ["atrofia"],
     "ectasia_independiente": ["ectasia"],  # hallazgo principal sin diagnóstico subyacente
+    # F5.1: términos fuera de scope tradicional pero rescatables
+    "paniculitis":           ["paniculitis"],  # F5.1
+    "desgarro_muscular":     ["desgarro muscular"],  # F5.1
 }
 
 CANONICOS_ETIOL: dict[str, list[str]] = {
@@ -148,7 +203,9 @@ CANONICOS_ETIOL: dict[str, list[str]] = {
 CANONICOS_NEG: dict[str, list[str]] = {
     "normal":                ["normal", "normales"],
     "negativo":              ["negativo", "negativos", "negativa", "negativas"],
-    "sin_evidencia":         ["sin evidencia"],
+    "sin_evidencia":         ["sin evidencia", "no se observa cambios",
+                              "no se observan cambios",
+                              "sin cambios anatómicos"],  # F5.1
     "no_se_observan":        ["no se observan"],
     "conservado":            ["conservado", "conservada", "conservados", "conservadas"],
     "sin_hallazgos":         ["sin hallazgos"],
@@ -402,10 +459,19 @@ _CATEGORIA_POR_TERMINO: dict[str, str] = {
     # ESPLENICA
     "esplenomegalia": "ESPLENICA", "nodulo_esplenico": "ESPLENICA",
     "hematoma_esplenico": "ESPLENICA",
+    "mielolipoma_esplenico": "ESPLENICA",  # F5.1
     # GASTROINTESTINAL
     "gastritis": "GASTROINTESTINAL", "gastropatia": "GASTROINTESTINAL",
     "enteritis": "GASTROINTESTINAL", "enterocolitis": "GASTROINTESTINAL",
     "colitis": "GASTROINTESTINAL", "ileitis": "GASTROINTESTINAL",
+    "ileo": "GASTROINTESTINAL",  # F5.1
+    "cuerpo_extrano": "GASTROINTESTINAL",  # F5.1
+    "distension_gastrica": "GASTROINTESTINAL",  # F5.1
+    "distension_intestinal": "GASTROINTESTINAL",  # F5.1
+    "distension_colonica": "GASTROINTESTINAL",  # F5.1
+    "distension_gastrointestinal": "GASTROINTESTINAL",  # F5.1
+    "tiflitis": "GASTROINTESTINAL",  # F5.1
+    "ulcera_intestinal": "GASTROINTESTINAL",  # F5.1
     # PANCREATICA
     "pancreatitis": "PANCREATICA", "cambios_pancreaticos": "PANCREATICA",
     # VESICULA
@@ -419,13 +485,20 @@ _CATEGORIA_POR_TERMINO: dict[str, str] = {
     "mucometra": "REPRODUCTIVO", "hemometra": "REPRODUCTIVO",
     "prostatomegalia": "REPRODUCTIVO", "prostatitis": "REPRODUCTIVO",
     "hiperplasia_prostatica": "REPRODUCTIVO",
-    "quiste_ovarico": "REPRODUCTIVO", "gestacion": "REPRODUCTIVO",
+    "quiste_ovarico": "REPRODUCTIVO",
+    "ovario_poliquistico": "REPRODUCTIVO",  # F5.1
+    "remanente_ovarico": "REPRODUCTIVO",  # F5.1
+    "actividad_estral": "REPRODUCTIVO",  # F5.1
+    "criptorquidismo": "REPRODUCTIVO",  # F5.1
+    "gestacion": "REPRODUCTIVO",
     # ENDOCRINO
     "adrenomegalia": "ENDOCRINO",
+    "cambios_tiroideos": "ENDOCRINO",  # F5.1
     # LINFATICO
     "linfadenomegalia": "LINFATICO",
     # PERITONEO
     "peritonitis": "PERITONEO", "derrame_peritoneal": "PERITONEO",
+    "derrame_pleural": "PERITONEO",  # F5.1
     # MISC
     "neoplasia": "MISC_NEOPLASIA", "neoplasico": "MISC_NEOPLASIA",
     "masa": "MISC_MORFOLOGIA", "nodulo": "MISC_MORFOLOGIA",
@@ -434,6 +507,8 @@ _CATEGORIA_POR_TERMINO: dict[str, str] = {
     "absceso": "MISC_MORFOLOGIA", "hematoma": "MISC_MORFOLOGIA",
     "polipo": "MISC_MORFOLOGIA", "hiperplasia": "MISC_MORFOLOGIA",
     "atrofia": "MISC_MORFOLOGIA", "ectasia_independiente": "MISC_MORFOLOGIA",
+    "paniculitis": "MISC_MORFOLOGIA",  # F5.1
+    "desgarro_muscular": "MISC_MORFOLOGIA",  # F5.1
 }
 
 
