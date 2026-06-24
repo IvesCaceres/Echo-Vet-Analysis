@@ -1,0 +1,42 @@
+==============================================================================
+VERIFICACIÓN F5 — Extracción de ítems de CONCLUSIONES (Opción C)
+==============================================================================
+
+[A. Esquema silver_conclusion_items]
+  ✅ A1 13 columnas Opción C presentes en silver_conclusion_items: faltan 0: ninguna
+  ✅ A2 0 columnas del esquema antiguo: presentes (no deberían): ninguna
+  ✅ A3 UNIQUE INDEX uq_silver_conc_items_unique existe: existe
+
+[B. dim_termino_conclusion poblado]
+  ✅ B1 ≥80 filas en dim_termino_conclusion: 81 filas
+  ✅ B2 3 valores distintos de tipo_item: 3 valores distintos
+  ✅ B3 nombre_canonico único: 0 duplicados
+  ✅ B4 0 huérfanos silver_conclusion_items → dim_termino_conclusion: 0 huérfanos
+
+[C. Volumen y cobertura (CRITERIO GO)]
+  ✅ C1 10k ≤ items ≤ 25k: 15,968 items
+  ✅ C2 ≥85% de conclusiones con ≥1 item: 2826/2893 (97.68%)
+  ✅ C3 items/conclusión entre 4 y 7: 5.65 items/conclusión
+  ✅ C4 0 duplicados en UNIQUE (conclusion_id, termino_conclusion_id, pos_inicio, pos_fin): 0 duplicados
+
+[D. Distribución por tipo_item]
+  ✅ D1 DIAGNOSTICO ≥ 40% del total: 9867 (61.79%)
+  ✅ D2 ETIOLOGIA entre 5% y 40%: 5574 (34.91%)
+  ✅ D3 NEGATIVO entre 1% y 30%: 527 (3.3%)
+
+[E. Cardinalidad de modificadores]
+  ✅ E1 cardinalidad modificador_cualidad ≤ 30: 15 valores distintos
+  ✅ E2 cardinalidad modificador_distribucion ≤ 10: 4 valores distintos
+  ✅ E3 cardinalidad lateralidad ≤ 8: 4 valores distintos
+
+[F. No-match staging]
+  ✅ F1 stg_conclusion_no_match poblada: 67 filas
+  ✅ F2 sci.conclusion_id ∪ stg.conclusion_id cubre raw.conclusiones: 2893 cubiertas / 2893 totales
+
+==============================================================================
+RESULTADO: 19/19 checks pasaron
+
+✅ PASS — Todos los criterios cumplidos
+   → F5 listo para proceder a capa Gold
+
+>>> VEREDICTO F5: GO <<<

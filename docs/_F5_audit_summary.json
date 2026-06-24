@@ -1,0 +1,338 @@
+{
+  "seed": 42,
+  "n_samples": 100,
+  "n_total_items": 1042,
+  "precision": {
+    "n_tp": 628,
+    "n_fp": 7,
+    "n_ambiguo": 407,
+    "precision_ajustada_tp_solo": 0.6027,
+    "precision_con_ambiguo_como_05": 0.798
+  },
+  "items_por_conclusion": {
+    "media": 10.42,
+    "mediana": 11,
+    "max": 33,
+    "min": 0,
+    "distribucion": [
+      {
+        "items": 0,
+        "conclusiones": 1
+      },
+      {
+        "items": 1,
+        "conclusiones": 10
+      },
+      {
+        "items": 2,
+        "conclusiones": 7
+      },
+      {
+        "items": 3,
+        "conclusiones": 10
+      },
+      {
+        "items": 4,
+        "conclusiones": 2
+      },
+      {
+        "items": 5,
+        "conclusiones": 4
+      },
+      {
+        "items": 6,
+        "conclusiones": 4
+      },
+      {
+        "items": 7,
+        "conclusiones": 3
+      },
+      {
+        "items": 8,
+        "conclusiones": 3
+      },
+      {
+        "items": 9,
+        "conclusiones": 2
+      },
+      {
+        "items": 10,
+        "conclusiones": 3
+      },
+      {
+        "items": 11,
+        "conclusiones": 3
+      },
+      {
+        "items": 12,
+        "conclusiones": 7
+      },
+      {
+        "items": 13,
+        "conclusiones": 12
+      },
+      {
+        "items": 14,
+        "conclusiones": 4
+      },
+      {
+        "items": 15,
+        "conclusiones": 5
+      },
+      {
+        "items": 16,
+        "conclusiones": 2
+      },
+      {
+        "items": 17,
+        "conclusiones": 1
+      },
+      {
+        "items": 18,
+        "conclusiones": 4
+      },
+      {
+        "items": 19,
+        "conclusiones": 1
+      },
+      {
+        "items": 20,
+        "conclusiones": 2
+      },
+      {
+        "items": 22,
+        "conclusiones": 1
+      },
+      {
+        "items": 23,
+        "conclusiones": 2
+      },
+      {
+        "items": 24,
+        "conclusiones": 1
+      },
+      {
+        "items": 25,
+        "conclusiones": 1
+      },
+      {
+        "items": 26,
+        "conclusiones": 3
+      },
+      {
+        "items": 31,
+        "conclusiones": 1
+      },
+      {
+        "items": 33,
+        "conclusiones": 1
+      }
+    ],
+    "conclusiones_sin_items": 1
+  },
+  "fp_por_categoria": {
+    "PATRON": 7
+  },
+  "top20_terminos": [
+    {
+      "termino": "leve",
+      "n_total": 115,
+      "n_tp": 0,
+      "n_fp": 0,
+      "n_ambiguo": 115,
+      "pct_tp": 0.0,
+      "pct_fp": 0.0,
+      "pct_amb": 100.0
+    },
+    {
+      "termino": "inflamatorio",
+      "n_total": 109,
+      "n_tp": 0,
+      "n_fp": 0,
+      "n_ambiguo": 109,
+      "pct_tp": 0.0,
+      "pct_fp": 0.0,
+      "pct_amb": 100.0
+    },
+    {
+      "termino": "sospecha_inflamatoria",
+      "n_total": 92,
+      "n_tp": 92,
+      "n_fp": 0,
+      "n_ambiguo": 0,
+      "pct_tp": 100.0,
+      "pct_fp": 0.0,
+      "pct_amb": 0.0
+    },
+    {
+      "termino": "moderada",
+      "n_total": 74,
+      "n_tp": 0,
+      "n_fp": 0,
+      "n_ambiguo": 74,
+      "pct_tp": 0.0,
+      "pct_fp": 0.0,
+      "pct_amb": 100.0
+    },
+    {
+      "termino": "nefropatia",
+      "n_total": 54,
+      "n_tp": 54,
+      "n_fp": 0,
+      "n_ambiguo": 0,
+      "pct_tp": 100.0,
+      "pct_fp": 0.0,
+      "pct_amb": 0.0
+    },
+    {
+      "termino": "bilateral",
+      "n_total": 52,
+      "n_tp": 52,
+      "n_fp": 0,
+      "n_ambiguo": 0,
+      "pct_tp": 100.0,
+      "pct_fp": 0.0,
+      "pct_amb": 0.0
+    },
+    {
+      "termino": "descartar",
+      "n_total": 41,
+      "n_tp": 41,
+      "n_fp": 0,
+      "n_ambiguo": 0,
+      "pct_tp": 100.0,
+      "pct_fp": 0.0,
+      "pct_amb": 0.0
+    },
+    {
+      "termino": "hepatomegalia",
+      "n_total": 40,
+      "n_tp": 40,
+      "n_fp": 0,
+      "n_ambiguo": 0,
+      "pct_tp": 100.0,
+      "pct_fp": 0.0,
+      "pct_amb": 0.0
+    },
+    {
+      "termino": "infiltrativo",
+      "n_total": 36,
+      "n_tp": 0,
+      "n_fp": 0,
+      "n_ambiguo": 36,
+      "pct_tp": 0.0,
+      "pct_fp": 0.0,
+      "pct_amb": 100.0
+    },
+    {
+      "termino": "neoplasico",
+      "n_total": 31,
+      "n_tp": 31,
+      "n_fp": 0,
+      "n_ambiguo": 0,
+      "pct_tp": 100.0,
+      "pct_fp": 0.0,
+      "pct_amb": 0.0
+    },
+    {
+      "termino": "no_se_puede_descartar",
+      "n_total": 30,
+      "n_tp": 30,
+      "n_fp": 0,
+      "n_ambiguo": 0,
+      "pct_tp": 100.0,
+      "pct_fp": 0.0,
+      "pct_amb": 0.0
+    },
+    {
+      "termino": "severa",
+      "n_total": 26,
+      "n_tp": 0,
+      "n_fp": 0,
+      "n_ambiguo": 26,
+      "pct_tp": 0.0,
+      "pct_fp": 0.0,
+      "pct_amb": 100.0
+    },
+    {
+      "termino": "sugerente_de",
+      "n_total": 25,
+      "n_tp": 25,
+      "n_fp": 0,
+      "n_ambiguo": 0,
+      "pct_tp": 100.0,
+      "pct_fp": 0.0,
+      "pct_amb": 0.0
+    },
+    {
+      "termino": "barro_biliar",
+      "n_total": 24,
+      "n_tp": 24,
+      "n_fp": 0,
+      "n_ambiguo": 0,
+      "pct_tp": 100.0,
+      "pct_fp": 0.0,
+      "pct_amb": 0.0
+    },
+    {
+      "termino": "cistitis",
+      "n_total": 18,
+      "n_tp": 18,
+      "n_fp": 0,
+      "n_ambiguo": 0,
+      "pct_tp": 100.0,
+      "pct_fp": 0.0,
+      "pct_amb": 0.0
+    },
+    {
+      "termino": "gastritis",
+      "n_total": 15,
+      "n_tp": 15,
+      "n_fp": 0,
+      "n_ambiguo": 0,
+      "pct_tp": 100.0,
+      "pct_fp": 0.0,
+      "pct_amb": 0.0
+    },
+    {
+      "termino": "izquierdo",
+      "n_total": 15,
+      "n_tp": 15,
+      "n_fp": 0,
+      "n_ambiguo": 0,
+      "pct_tp": 100.0,
+      "pct_fp": 0.0,
+      "pct_amb": 0.0
+    },
+    {
+      "termino": "hepatopatia",
+      "n_total": 13,
+      "n_tp": 13,
+      "n_fp": 0,
+      "n_ambiguo": 0,
+      "pct_tp": 100.0,
+      "pct_fp": 0.0,
+      "pct_amb": 0.0
+    },
+    {
+      "termino": "hepatopatia_vacuolar",
+      "n_total": 13,
+      "n_tp": 13,
+      "n_fp": 0,
+      "n_ambiguo": 0,
+      "pct_tp": 100.0,
+      "pct_fp": 0.0,
+      "pct_amb": 0.0
+    },
+    {
+      "termino": "no_se_observan",
+      "n_total": 12,
+      "n_tp": 0,
+      "n_fp": 0,
+      "n_ambiguo": 12,
+      "pct_tp": 0.0,
+      "pct_fp": 0.0,
+      "pct_amb": 100.0
+    }
+  ]
+}

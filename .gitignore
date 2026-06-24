@@ -1,0 +1,177 @@
+# ============================================
+# ENTORNOS VIRTUALES
+# ============================================
+venvvector/
+.venv/
+venv/
+env/
+
+# ============================================
+# PYTHON BYTECODE Y CACHÉ
+# ============================================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pycache/
+*.so
+
+# ============================================
+# SECRETOS Y CONFIGURACIÓN LOCAL
+# ============================================
+.env
+.env.local
+.env.*.local
+*.local
+settings.local.json
+config.local.*
+*.secret
+
+# ============================================
+# BASES DE DATOS Y LOGS
+# ============================================
+informes.db
+*.db
+*.sqlite
+*.sqlite3
+*.sqlite-journal
+*.db-journal
+errores_ingest.log
+*.log
+logs/
+*.out
+
+# ============================================
+# DATOS MÉDICOS Y SENSIBLES (¡IMPORTANTE!)
+# ============================================
+# Excluye TODAS las carpetas de ecografías
+Ecografía*/
+Ecografia*/
+Eco*/
+!Ecografía*/README.md  # Solo si quieres mantener la estructura
+!Ecografia*/README.md
+!Eco*/README.md
+
+# Excluye también otros datos médicos
+data/raw/
+data/processed/
+data/medical/
+data/pacientes/
+imagenes/
+ultrasonidos/
+
+# ============================================
+# RESPALDOS Y ARCHIVOS TEMPORALES
+# ============================================
+backup-*/
+pg_pre_reset_*
+*.backup
+*.bak
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+.~*
+
+# ============================================
+# ARCHIVOS DEL SISTEMA Y HERRAMIENTAS
+# ============================================
+_purgatorio/
+.claude/
+.idea/
+.vscode/
+*.code-workspace
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# ============================================
+# CACHÉ DE HERRAMIENTAS DE TESTING/LINTING
+# ============================================
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.tox/
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# ============================================
+# EMPAQUETADO Y DISTRIBUCIÓN
+# ============================================
+*.egg-info/
+dist/
+build/
+*.egg
+MANIFEST
+
+# ============================================
+# ARCHIVOS DE WORD Y PDF (basura temporal)
+# ============================================
+~$*.docx
+~$*.doc
+._*.docx
+._*.doc
+._*.pdf
+*.tmp.docx
+*.tmp.pdf
+
+# ============================================
+# ARCHIVOS DE DATOS (excluye datos crudos)
+# ============================================
+*.csv
+*.xlsx
+*.xls
+*.parquet
+*.feather
+*.arrow
+*.h5
+*.hdf5
+*.pickle
+*.pkl
+
+# ============================================
+# SNAPSHOTS Y REPORTES GENERADOS
+# ============================================
+snapshots/
+reports/
+*.html
+*.pdf  # ¡CUIDADO! Si tienes PDFs importantes, no los excluyas todos
+# Si quieres excluir solo PDFs generados automáticamente:
+report_*.pdf
+output_*.pdf
+
+# ============================================
+# IMÁGENES (excluye imágenes médicas)
+# ============================================
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.tiff
+*.tif
+*.bmp
+*.dicom
+*.dcm
+*.nii
+*.nii.gz
+
+# ============================================
+# JUPYTER
+# ============================================
+.ipynb_checkpoints/
+*.ipynb
+# Si quieres conservar algunos notebooks:
+!notebooks/
+!*.ipynb  # Solo si tienes una carpeta notebooks/ que quieras conservar
+
+# ============================================
+# ARCHIVOS DE POSTGRESQL
+# ============================================
+*.pgdump
+*.sql.gz
+*.sql.bak

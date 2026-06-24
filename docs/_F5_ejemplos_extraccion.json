@@ -1,0 +1,946 @@
+[
+  {
+    "cid": 1,
+    "iid": 1,
+    "texto": "Gestación normal de 3 fetos vitales, con anexos fetales normales y edad gestacional aproximada de: 52 + - 3 días.",
+    "items": [
+      {
+        "termino_original": "gestación",
+        "termino_canonico": "gestacion",
+        "tipo_item": "DIAGNOSTICO",
+        "modificador": null,
+        "lateralidad": null,
+        "pos_inicio": 0,
+        "pos_fin": 9,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "normales",
+        "termino_canonico": "normal",
+        "tipo_item": "NEGATIVO",
+        "modificador": null,
+        "lateralidad": null,
+        "pos_inicio": 56,
+        "pos_fin": 64,
+        "confianza": 0.95
+      }
+    ]
+  },
+  {
+    "cid": 2,
+    "iid": 2,
+    "texto": "Nefropatía bilateral leve de aspecto inflamatorio. Histeromegalia sugerente de piometra.",
+    "items": [
+      {
+        "termino_original": "piometra",
+        "termino_canonico": "piometra",
+        "tipo_item": "DIAGNOSTICO",
+        "modificador": null,
+        "lateralidad": "BILATERAL",
+        "pos_inicio": 79,
+        "pos_fin": 87,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "nefropatía",
+        "termino_canonico": "nefropatia",
+        "tipo_item": "DIAGNOSTICO",
+        "modificador": null,
+        "lateralidad": "BILATERAL",
+        "pos_inicio": 0,
+        "pos_fin": 10,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "histeromegalia",
+        "termino_canonico": "histeromegalia",
+        "tipo_item": "DIAGNOSTICO",
+        "modificador": "LEVE",
+        "lateralidad": "BILATERAL",
+        "pos_inicio": 51,
+        "pos_fin": 65,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "inflamatorio",
+        "termino_canonico": "inflamatorio",
+        "tipo_item": "PATRON",
+        "modificador": "LEVE",
+        "lateralidad": "BILATERAL",
+        "pos_inicio": 37,
+        "pos_fin": 49,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "leve",
+        "termino_canonico": "leve",
+        "tipo_item": "PATRON",
+        "modificador": "LEVE",
+        "lateralidad": "BILATERAL",
+        "pos_inicio": 21,
+        "pos_fin": 25,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "sugerente de",
+        "termino_canonico": "sugerente_de",
+        "tipo_item": "ETIOLOGIA",
+        "modificador": null,
+        "lateralidad": "BILATERAL",
+        "pos_inicio": 66,
+        "pos_fin": 78,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "bilateral",
+        "termino_canonico": "bilateral",
+        "tipo_item": "LATERALIDAD",
+        "modificador": null,
+        "lateralidad": "bilateral",
+        "pos_inicio": 11,
+        "pos_fin": 20,
+        "confianza": 0.95
+      }
+    ]
+  },
+  {
+    "cid": 3,
+    "iid": 3,
+    "texto": "Hepatomegalia leve de aspecto inflamatorio/infiltrativo, sugerente de hepatopatía vacuolar, hígado graso o amiloidosis en menor medida.",
+    "items": [
+      {
+        "termino_original": "hepatomegalia",
+        "termino_canonico": "hepatomegalia",
+        "tipo_item": "DIAGNOSTICO",
+        "modificador": null,
+        "lateralidad": null,
+        "pos_inicio": 0,
+        "pos_fin": 13,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "hepatopatía",
+        "termino_canonico": "hepatopatia",
+        "tipo_item": "DIAGNOSTICO",
+        "modificador": null,
+        "lateralidad": null,
+        "pos_inicio": 70,
+        "pos_fin": 81,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "vacuolar",
+        "termino_canonico": "vacuolar",
+        "tipo_item": "DIAGNOSTICO",
+        "modificador": null,
+        "lateralidad": null,
+        "pos_inicio": 82,
+        "pos_fin": 90,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "inflamatorio",
+        "termino_canonico": "inflamatorio",
+        "tipo_item": "PATRON",
+        "modificador": "LEVE",
+        "lateralidad": null,
+        "pos_inicio": 30,
+        "pos_fin": 42,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "infiltrativo",
+        "termino_canonico": "infiltrativo",
+        "tipo_item": "PATRON",
+        "modificador": "LEVE",
+        "lateralidad": null,
+        "pos_inicio": 43,
+        "pos_fin": 55,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "leve",
+        "termino_canonico": "leve",
+        "tipo_item": "PATRON",
+        "modificador": "LEVE",
+        "lateralidad": null,
+        "pos_inicio": 14,
+        "pos_fin": 18,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "sugerente de",
+        "termino_canonico": "sugerente_de",
+        "tipo_item": "ETIOLOGIA",
+        "modificador": null,
+        "lateralidad": null,
+        "pos_inicio": 57,
+        "pos_fin": 69,
+        "confianza": 0.95
+      }
+    ]
+  },
+  {
+    "cid": 6,
+    "iid": 6,
+    "texto": "Gastritis leve. Colecistitis. Nefropatía bilateral moderada de aspecto inflamatorio.",
+    "items": [
+      {
+        "termino_original": "nefropatía",
+        "termino_canonico": "nefropatia",
+        "tipo_item": "DIAGNOSTICO",
+        "modificador": "LEVE",
+        "lateralidad": "BILATERAL",
+        "pos_inicio": 30,
+        "pos_fin": 40,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "gastritis",
+        "termino_canonico": "gastritis",
+        "tipo_item": "DIAGNOSTICO",
+        "modificador": null,
+        "lateralidad": "BILATERAL",
+        "pos_inicio": 0,
+        "pos_fin": 9,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "inflamatorio",
+        "termino_canonico": "inflamatorio",
+        "tipo_item": "PATRON",
+        "modificador": "MODERADA",
+        "lateralidad": "BILATERAL",
+        "pos_inicio": 71,
+        "pos_fin": 83,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "leve",
+        "termino_canonico": "leve",
+        "tipo_item": "PATRON",
+        "modificador": "LEVE",
+        "lateralidad": "BILATERAL",
+        "pos_inicio": 10,
+        "pos_fin": 14,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "moderada",
+        "termino_canonico": "moderada",
+        "tipo_item": "PATRON",
+        "modificador": "MODERADA",
+        "lateralidad": "BILATERAL",
+        "pos_inicio": 51,
+        "pos_fin": 59,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "bilateral",
+        "termino_canonico": "bilateral",
+        "tipo_item": "LATERALIDAD",
+        "modificador": null,
+        "lateralidad": "bilateral",
+        "pos_inicio": 41,
+        "pos_fin": 50,
+        "confianza": 0.95
+      }
+    ]
+  },
+  {
+    "cid": 7,
+    "iid": 7,
+    "texto": "Hepatomegalia leve a moderada de aspecto inflamatorio. Pancreatitis de aspecto agudo y peritonitis asociada al área.",
+    "items": [
+      {
+        "termino_original": "hepatomegalia",
+        "termino_canonico": "hepatomegalia",
+        "tipo_item": "DIAGNOSTICO",
+        "modificador": null,
+        "lateralidad": null,
+        "pos_inicio": 0,
+        "pos_fin": 13,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "pancreatitis",
+        "termino_canonico": "pancreatitis",
+        "tipo_item": "DIAGNOSTICO",
+        "modificador": null,
+        "lateralidad": null,
+        "pos_inicio": 55,
+        "pos_fin": 67,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "inflamatorio",
+        "termino_canonico": "inflamatorio",
+        "tipo_item": "PATRON",
+        "modificador": "LEVE",
+        "lateralidad": null,
+        "pos_inicio": 41,
+        "pos_fin": 53,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "leve",
+        "termino_canonico": "leve",
+        "tipo_item": "PATRON",
+        "modificador": "LEVE",
+        "lateralidad": null,
+        "pos_inicio": 14,
+        "pos_fin": 18,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "moderada",
+        "termino_canonico": "moderada",
+        "tipo_item": "PATRON",
+        "modificador": "LEVE",
+        "lateralidad": null,
+        "pos_inicio": 21,
+        "pos_fin": 29,
+        "confianza": 0.95
+      }
+    ]
+  },
+  {
+    "cid": 8,
+    "iid": 8,
+    "texto": "Cistitis. Nefropatía bilateral moderada a severa de aspecto inflamatorio crónico. Microhepatia leve de aspecto inflamatorio. Pancreatitis severa.",
+    "items": [
+      {
+        "termino_original": "nefropatía",
+        "termino_canonico": "nefropatia",
+        "tipo_item": "DIAGNOSTICO",
+        "modificador": null,
+        "lateralidad": "BILATERAL",
+        "pos_inicio": 10,
+        "pos_fin": 20,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "cistitis",
+        "termino_canonico": "cistitis",
+        "tipo_item": "DIAGNOSTICO",
+        "modificador": null,
+        "lateralidad": "BILATERAL",
+        "pos_inicio": 0,
+        "pos_fin": 8,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "pancreatitis",
+        "termino_canonico": "pancreatitis",
+        "tipo_item": "DIAGNOSTICO",
+        "modificador": "LEVE",
+        "lateralidad": "BILATERAL",
+        "pos_inicio": 125,
+        "pos_fin": 137,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "inflamatorio",
+        "termino_canonico": "inflamatorio",
+        "tipo_item": "PATRON",
+        "modificador": "MODERADA",
+        "lateralidad": "BILATERAL",
+        "pos_inicio": 60,
+        "pos_fin": 72,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "leve",
+        "termino_canonico": "leve",
+        "tipo_item": "PATRON",
+        "modificador": "LEVE",
+        "lateralidad": "BILATERAL",
+        "pos_inicio": 95,
+        "pos_fin": 99,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "moderada",
+        "termino_canonico": "moderada",
+        "tipo_item": "PATRON",
+        "modificador": "MODERADA",
+        "lateralidad": "BILATERAL",
+        "pos_inicio": 31,
+        "pos_fin": 39,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "severa",
+        "termino_canonico": "severa",
+        "tipo_item": "PATRON",
+        "modificador": "MODERADA",
+        "lateralidad": "BILATERAL",
+        "pos_inicio": 42,
+        "pos_fin": 48,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "bilateral",
+        "termino_canonico": "bilateral",
+        "tipo_item": "LATERALIDAD",
+        "modificador": null,
+        "lateralidad": "bilateral",
+        "pos_inicio": 21,
+        "pos_fin": 30,
+        "confianza": 0.95
+      }
+    ]
+  },
+  {
+    "cid": 9,
+    "iid": 9,
+    "texto": "Nefropatía bilateral leve a moderado de aspecto inflamatorio crónico. Estructura caudal al riñón izquierdo que puede sugerir presencia de estructura ovárica.",
+    "items": [
+      {
+        "termino_original": "nefropatía",
+        "termino_canonico": "nefropatia",
+        "tipo_item": "DIAGNOSTICO",
+        "modificador": null,
+        "lateralidad": "BILATERAL",
+        "pos_inicio": 0,
+        "pos_fin": 10,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "inflamatorio",
+        "termino_canonico": "inflamatorio",
+        "tipo_item": "PATRON",
+        "modificador": "LEVE",
+        "lateralidad": "BILATERAL",
+        "pos_inicio": 48,
+        "pos_fin": 60,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "leve",
+        "termino_canonico": "leve",
+        "tipo_item": "PATRON",
+        "modificador": "LEVE",
+        "lateralidad": "BILATERAL",
+        "pos_inicio": 21,
+        "pos_fin": 25,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "moderado",
+        "termino_canonico": "moderada",
+        "tipo_item": "PATRON",
+        "modificador": "LEVE",
+        "lateralidad": "BILATERAL",
+        "pos_inicio": 28,
+        "pos_fin": 36,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "bilateral",
+        "termino_canonico": "bilateral",
+        "tipo_item": "LATERALIDAD",
+        "modificador": null,
+        "lateralidad": "bilateral",
+        "pos_inicio": 11,
+        "pos_fin": 20,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "izquierdo",
+        "termino_canonico": "izquierdo",
+        "tipo_item": "LATERALIDAD",
+        "modificador": null,
+        "lateralidad": "izquierdo",
+        "pos_inicio": 97,
+        "pos_fin": 106,
+        "confianza": 0.95
+      }
+    ]
+  },
+  {
+    "cid": 10,
+    "iid": 10,
+    "texto": "Cistitis. Nefropatía bilateral leve a moderado de aspecto inflamatorio. Presencia de contenido de apariencia alimenticia en estómago que no permite descartar presencia de cuerpos extraños (menos proba",
+    "items": [
+      {
+        "termino_original": "nefropatía",
+        "termino_canonico": "nefropatia",
+        "tipo_item": "DIAGNOSTICO",
+        "modificador": null,
+        "lateralidad": "BILATERAL",
+        "pos_inicio": 10,
+        "pos_fin": 20,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "cistitis",
+        "termino_canonico": "cistitis",
+        "tipo_item": "DIAGNOSTICO",
+        "modificador": null,
+        "lateralidad": "BILATERAL",
+        "pos_inicio": 0,
+        "pos_fin": 8,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "inflamatorio",
+        "termino_canonico": "inflamatorio",
+        "tipo_item": "PATRON",
+        "modificador": "LEVE",
+        "lateralidad": "BILATERAL",
+        "pos_inicio": 58,
+        "pos_fin": 70,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "leve",
+        "termino_canonico": "leve",
+        "tipo_item": "PATRON",
+        "modificador": "LEVE",
+        "lateralidad": "BILATERAL",
+        "pos_inicio": 31,
+        "pos_fin": 35,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "moderado",
+        "termino_canonico": "moderada",
+        "tipo_item": "PATRON",
+        "modificador": "LEVE",
+        "lateralidad": "BILATERAL",
+        "pos_inicio": 38,
+        "pos_fin": 46,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "descartar",
+        "termino_canonico": "descartar",
+        "tipo_item": "ETIOLOGIA",
+        "modificador": null,
+        "lateralidad": "BILATERAL",
+        "pos_inicio": 148,
+        "pos_fin": 157,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "probable",
+        "termino_canonico": "probable",
+        "tipo_item": "ETIOLOGIA",
+        "modificador": null,
+        "lateralidad": "BILATERAL",
+        "pos_inicio": 195,
+        "pos_fin": 203,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "bilateral",
+        "termino_canonico": "bilateral",
+        "tipo_item": "LATERALIDAD",
+        "modificador": null,
+        "lateralidad": "bilateral",
+        "pos_inicio": 21,
+        "pos_fin": 30,
+        "confianza": 0.95
+      }
+    ]
+  },
+  {
+    "cid": 11,
+    "iid": 11,
+    "texto": "Cistitis. Nefropatía bilateral leve a moderado de aspecto inflamatorio.",
+    "items": [
+      {
+        "termino_original": "nefropatía",
+        "termino_canonico": "nefropatia",
+        "tipo_item": "DIAGNOSTICO",
+        "modificador": null,
+        "lateralidad": "BILATERAL",
+        "pos_inicio": 10,
+        "pos_fin": 20,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "cistitis",
+        "termino_canonico": "cistitis",
+        "tipo_item": "DIAGNOSTICO",
+        "modificador": null,
+        "lateralidad": "BILATERAL",
+        "pos_inicio": 0,
+        "pos_fin": 8,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "inflamatorio",
+        "termino_canonico": "inflamatorio",
+        "tipo_item": "PATRON",
+        "modificador": "LEVE",
+        "lateralidad": "BILATERAL",
+        "pos_inicio": 58,
+        "pos_fin": 70,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "leve",
+        "termino_canonico": "leve",
+        "tipo_item": "PATRON",
+        "modificador": "LEVE",
+        "lateralidad": "BILATERAL",
+        "pos_inicio": 31,
+        "pos_fin": 35,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "moderado",
+        "termino_canonico": "moderada",
+        "tipo_item": "PATRON",
+        "modificador": "LEVE",
+        "lateralidad": "BILATERAL",
+        "pos_inicio": 38,
+        "pos_fin": 46,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "bilateral",
+        "termino_canonico": "bilateral",
+        "tipo_item": "LATERALIDAD",
+        "modificador": null,
+        "lateralidad": "bilateral",
+        "pos_inicio": 21,
+        "pos_fin": 30,
+        "confianza": 0.95
+      }
+    ]
+  },
+  {
+    "cid": 12,
+    "iid": 12,
+    "texto": "Nefropatía bilateral leve de aspecto inflamatorio. Hepatomegalia severa de aspecto infiltrativo graso/hepatopatía vacuolar sin poder descartar proceso neoproliferativo. Gastritis de aspecto infiltrati",
+    "items": [
+      {
+        "termino_original": "hepatomegalia",
+        "termino_canonico": "hepatomegalia",
+        "tipo_item": "DIAGNOSTICO",
+        "modificador": "LEVE",
+        "lateralidad": "BILATERAL",
+        "pos_inicio": 51,
+        "pos_fin": 64,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "hepatopatía",
+        "termino_canonico": "hepatopatia",
+        "tipo_item": "DIAGNOSTICO",
+        "modificador": null,
+        "lateralidad": "BILATERAL",
+        "pos_inicio": 102,
+        "pos_fin": 113,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "nefropatía",
+        "termino_canonico": "nefropatia",
+        "tipo_item": "DIAGNOSTICO",
+        "modificador": null,
+        "lateralidad": "BILATERAL",
+        "pos_inicio": 0,
+        "pos_fin": 10,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "gastritis",
+        "termino_canonico": "gastritis",
+        "tipo_item": "DIAGNOSTICO",
+        "modificador": null,
+        "lateralidad": "BILATERAL",
+        "pos_inicio": 169,
+        "pos_fin": 178,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "enteritis",
+        "termino_canonico": "enteritis",
+        "tipo_item": "DIAGNOSTICO",
+        "modificador": null,
+        "lateralidad": "BILATERAL",
+        "pos_inicio": 204,
+        "pos_fin": 213,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "vacuolar",
+        "termino_canonico": "vacuolar",
+        "tipo_item": "DIAGNOSTICO",
+        "modificador": null,
+        "lateralidad": "BILATERAL",
+        "pos_inicio": 114,
+        "pos_fin": 122,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "inflamatorio",
+        "termino_canonico": "inflamatorio",
+        "tipo_item": "PATRON",
+        "modificador": "LEVE",
+        "lateralidad": "BILATERAL",
+        "pos_inicio": 37,
+        "pos_fin": 49,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "infiltrativo",
+        "termino_canonico": "infiltrativo",
+        "tipo_item": "PATRON",
+        "modificador": "SEVERA",
+        "lateralidad": "BILATERAL",
+        "pos_inicio": 83,
+        "pos_fin": 95,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "leve",
+        "termino_canonico": "leve",
+        "tipo_item": "PATRON",
+        "modificador": "LEVE",
+        "lateralidad": "BILATERAL",
+        "pos_inicio": 21,
+        "pos_fin": 25,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "severa",
+        "termino_canonico": "severa",
+        "tipo_item": "PATRON",
+        "modificador": "SEVERA",
+        "lateralidad": "BILATERAL",
+        "pos_inicio": 65,
+        "pos_fin": 71,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "descartar",
+        "termino_canonico": "descartar",
+        "tipo_item": "ETIOLOGIA",
+        "modificador": null,
+        "lateralidad": "BILATERAL",
+        "pos_inicio": 133,
+        "pos_fin": 142,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "bilateral",
+        "termino_canonico": "bilateral",
+        "tipo_item": "LATERALIDAD",
+        "modificador": null,
+        "lateralidad": "bilateral",
+        "pos_inicio": 11,
+        "pos_fin": 20,
+        "confianza": 0.95
+      }
+    ]
+  },
+  {
+    "cid": 13,
+    "iid": 13,
+    "texto": "Prostatomegalia moderada de aspecto hiperplásico. Nefropatía bilateral leve de aspecto inflamatorio. Esplenomegalia severa de aspecto inespecífico. Hepatomegalia severa de aspecto inflamatorio. Barro ",
+    "items": [
+      {
+        "termino_original": "hepatomegalia",
+        "termino_canonico": "hepatomegalia",
+        "tipo_item": "DIAGNOSTICO",
+        "modificador": null,
+        "lateralidad": "BILATERAL",
+        "pos_inicio": 148,
+        "pos_fin": 161,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "nefropatía",
+        "termino_canonico": "nefropatia",
+        "tipo_item": "DIAGNOSTICO",
+        "modificador": null,
+        "lateralidad": "BILATERAL",
+        "pos_inicio": 50,
+        "pos_fin": 60,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "esplenomegalia",
+        "termino_canonico": "esplenomegalia",
+        "tipo_item": "DIAGNOSTICO",
+        "modificador": "LEVE",
+        "lateralidad": "BILATERAL",
+        "pos_inicio": 101,
+        "pos_fin": 115,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "gastritis",
+        "termino_canonico": "gastritis",
+        "tipo_item": "DIAGNOSTICO",
+        "modificador": "LEVE",
+        "lateralidad": "BILATERAL",
+        "pos_inicio": 224,
+        "pos_fin": 233,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "biliar",
+        "termino_canonico": "biliar",
+        "tipo_item": "DIAGNOSTICO",
+        "modificador": null,
+        "lateralidad": "BILATERAL",
+        "pos_inicio": 200,
+        "pos_fin": 206,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "inflamatorio",
+        "termino_canonico": "inflamatorio",
+        "tipo_item": "PATRON",
+        "modificador": "LEVE",
+        "lateralidad": "BILATERAL",
+        "pos_inicio": 87,
+        "pos_fin": 99,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "infiltrativo",
+        "termino_canonico": "infiltrativo",
+        "tipo_item": "PATRON",
+        "modificador": "LEVE",
+        "lateralidad": "BILATERAL",
+        "pos_inicio": 250,
+        "pos_fin": 262,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "leve",
+        "termino_canonico": "leve",
+        "tipo_item": "PATRON",
+        "modificador": "LEVE",
+        "lateralidad": "BILATERAL",
+        "pos_inicio": 71,
+        "pos_fin": 75,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "moderada",
+        "termino_canonico": "moderada",
+        "tipo_item": "PATRON",
+        "modificador": "MODERADA",
+        "lateralidad": "BILATERAL",
+        "pos_inicio": 16,
+        "pos_fin": 24,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "severa",
+        "termino_canonico": "severa",
+        "tipo_item": "PATRON",
+        "modificador": "SEVERA",
+        "lateralidad": "BILATERAL",
+        "pos_inicio": 116,
+        "pos_fin": 122,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "bilateral",
+        "termino_canonico": "bilateral",
+        "tipo_item": "LATERALIDAD",
+        "modificador": null,
+        "lateralidad": "bilateral",
+        "pos_inicio": 61,
+        "pos_fin": 70,
+        "confianza": 0.95
+      }
+    ]
+  },
+  {
+    "cid": 14,
+    "iid": 14,
+    "texto": "Cistitis moderada. Nefropatía bilateral leve de aspecto inflamatorio. Hepatomegalia leve de aspecto inflamatorio. Barro biliar leve.",
+    "items": [
+      {
+        "termino_original": "hepatomegalia",
+        "termino_canonico": "hepatomegalia",
+        "tipo_item": "DIAGNOSTICO",
+        "modificador": "LEVE",
+        "lateralidad": "BILATERAL",
+        "pos_inicio": 70,
+        "pos_fin": 83,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "nefropatía",
+        "termino_canonico": "nefropatia",
+        "tipo_item": "DIAGNOSTICO",
+        "modificador": "MODERADA",
+        "lateralidad": "BILATERAL",
+        "pos_inicio": 19,
+        "pos_fin": 29,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "cistitis",
+        "termino_canonico": "cistitis",
+        "tipo_item": "DIAGNOSTICO",
+        "modificador": null,
+        "lateralidad": "BILATERAL",
+        "pos_inicio": 0,
+        "pos_fin": 8,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "biliar",
+        "termino_canonico": "biliar",
+        "tipo_item": "DIAGNOSTICO",
+        "modificador": null,
+        "lateralidad": "BILATERAL",
+        "pos_inicio": 120,
+        "pos_fin": 126,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "inflamatorio",
+        "termino_canonico": "inflamatorio",
+        "tipo_item": "PATRON",
+        "modificador": "LEVE",
+        "lateralidad": "BILATERAL",
+        "pos_inicio": 56,
+        "pos_fin": 68,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "leve",
+        "termino_canonico": "leve",
+        "tipo_item": "PATRON",
+        "modificador": "LEVE",
+        "lateralidad": "BILATERAL",
+        "pos_inicio": 40,
+        "pos_fin": 44,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "moderada",
+        "termino_canonico": "moderada",
+        "tipo_item": "PATRON",
+        "modificador": "MODERADA",
+        "lateralidad": "BILATERAL",
+        "pos_inicio": 9,
+        "pos_fin": 17,
+        "confianza": 0.95
+      },
+      {
+        "termino_original": "bilateral",
+        "termino_canonico": "bilateral",
+        "tipo_item": "LATERALIDAD",
+        "modificador": "MODERADA",
+        "lateralidad": "bilateral",
+        "pos_inicio": 30,
+        "pos_fin": 39,
+        "confianza": 0.95
+      }
+    ]
+  }
+]

@@ -1,0 +1,91 @@
+[build_silver] aplicando migraciones pendientes...
+[build_silver] === Fase F5 ===
+[f5] construyendo silver_conclusion_items (Opción C)...
+
+[f5] OK en 2.87s
+
+[f5 extract] métricas:
+  n_conclusiones_total           2893
+  n_conclusiones_con_items       2826
+  n_conclusiones_sin_items       67
+  n_items_total                  15968
+  items_per_conclusion           {'media': 5.52, 'mediana': 5, 'max': 26, 'min': 0}
+
+[f5] dim_termino_conclusion:
+  filas nuevas en este run: 0
+  filas totales:            81
+
+[f5] silver_conclusion_items:
+  filas eliminadas (rebuild): 15968
+  filas insertadas:           15968
+
+[f5] stg_conclusion_no_match:
+  filas eliminadas (rebuild): 67
+  filas insertadas:           67
+
+[f5] dim_termino_conclusion.frecuencia_rank:
+  actualizados con datos:     74
+  marcados sin uso:           7
+
+[f5] cobertura:
+  conclusiones con >=1 item:  2826 / 2893 (97.68%)
+  items/conclusion:           {'media': 5.52, 'mediana': 5, 'max': 26, 'min': 0}
+
+[f5] Top 20 términos canónicos:
+   1. sospecha_inflamatoria           2,772
+   2. nefropatia                      1,624
+   3. hepatomegalia                   1,110
+   4. descartar                         952
+   5. no_se_puede_descartar             869
+   6. neoplasico                        763
+   7. sugerente_de                      762
+   8. hepatopatia                       559
+   9. gastritis                         551
+  10. hepatopatia_vacuolar              540
+  11. barro_biliar                      474
+  12. cistitis                          450
+  13. nodulo                            287
+  14. derrame_peritoneal                267
+  15. colitis                           252
+  16. masa                              239
+  17. enteritis                         238
+  18. pancreatitis                      234
+  19. normal                            221
+  20. esplenomegalia                    217
+
+[f5] distribución por tipo_item:
+  DIAGNOSTICO     9,867
+  ETIOLOGIA       5,574
+  NEGATIVO          527
+
+[f5] top modificador_cualidad:
+  (sin)            4,783
+  leve             3,746
+  inflamatorio     3,502
+  moderada         1,546
+  infiltrativo     1,323
+  severa             877
+  reactivo            88
+  cronica             54
+  dilatado            14
+  aguda               13
+
+[f5] top modificador_distribucion:
+  (sin)           15,412
+  focal              311
+  discreta           160
+  generalizada        52
+  difusa              33
+
+[f5] top lateralidad:
+  (sin)           11,652
+  bilateral        3,299
+  izquierdo          600
+  derecho            401
+  ambos               16
+
+[f5] items con negado=TRUE:
+  1550 / 15968 (9.71%)
+
+[f5] silver_etl_runs (último run):
+  id=17  phase=f5  status=ok  read=2893  written=16035  dur=2881ms  actor=ivesc

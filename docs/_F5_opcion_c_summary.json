@@ -1,0 +1,315 @@
+{
+  "n_conclusiones_total": 2893,
+  "n_conclusiones_con_items": 2826,
+  "n_conclusiones_sin_items": 67,
+  "pct_con_items": 97.68,
+  "n_items_total": 15968,
+  "items_por_conclusion": {
+    "media": 5.52,
+    "mediana": 5,
+    "max": 26,
+    "min": 0
+  },
+  "reduccion_vs_full": "FULL (~10.42 items/concl, 60.3% precision) → OPCION_C (~6.0 items/concl, ~98% precision)",
+  "precision_estimada": "98.0% (basado en auditoria previa de 100 conclusiones con seed=42)",
+  "top_50_terminos": [
+    {
+      "termino": "sospecha_inflamatoria",
+      "frecuencia": 2772
+    },
+    {
+      "termino": "nefropatia",
+      "frecuencia": 1624
+    },
+    {
+      "termino": "hepatomegalia",
+      "frecuencia": 1110
+    },
+    {
+      "termino": "descartar",
+      "frecuencia": 952
+    },
+    {
+      "termino": "no_se_puede_descartar",
+      "frecuencia": 869
+    },
+    {
+      "termino": "neoplasico",
+      "frecuencia": 763
+    },
+    {
+      "termino": "sugerente_de",
+      "frecuencia": 762
+    },
+    {
+      "termino": "hepatopatia",
+      "frecuencia": 559
+    },
+    {
+      "termino": "gastritis",
+      "frecuencia": 551
+    },
+    {
+      "termino": "hepatopatia_vacuolar",
+      "frecuencia": 540
+    },
+    {
+      "termino": "barro_biliar",
+      "frecuencia": 474
+    },
+    {
+      "termino": "cistitis",
+      "frecuencia": 450
+    },
+    {
+      "termino": "nodulo",
+      "frecuencia": 287
+    },
+    {
+      "termino": "derrame_peritoneal",
+      "frecuencia": 267
+    },
+    {
+      "termino": "colitis",
+      "frecuencia": 252
+    },
+    {
+      "termino": "masa",
+      "frecuencia": 239
+    },
+    {
+      "termino": "enteritis",
+      "frecuencia": 238
+    },
+    {
+      "termino": "pancreatitis",
+      "frecuencia": 234
+    },
+    {
+      "termino": "normal",
+      "frecuencia": 221
+    },
+    {
+      "termino": "esplenomegalia",
+      "frecuencia": 217
+    },
+    {
+      "termino": "peritonitis",
+      "frecuencia": 205
+    },
+    {
+      "termino": "adrenomegalia",
+      "frecuencia": 201
+    },
+    {
+      "termino": "no_se_observan",
+      "frecuencia": 162
+    },
+    {
+      "termino": "pielectasia",
+      "frecuencia": 155
+    },
+    {
+      "termino": "quiste",
+      "frecuencia": 154
+    },
+    {
+      "termino": "prostatomegalia",
+      "frecuencia": 146
+    },
+    {
+      "termino": "histeromegalia",
+      "frecuencia": 139
+    },
+    {
+      "termino": "gestacion",
+      "frecuencia": 133
+    },
+    {
+      "termino": "sedimento_vejiga",
+      "frecuencia": 127
+    },
+    {
+      "termino": "microhepatia",
+      "frecuencia": 104
+    },
+    {
+      "termino": "negativo",
+      "frecuencia": 88
+    },
+    {
+      "termino": "nodulo_esplenico",
+      "frecuencia": 87
+    },
+    {
+      "termino": "compatible_con",
+      "frecuencia": 86
+    },
+    {
+      "termino": "colecistitis",
+      "frecuencia": 84
+    },
+    {
+      "termino": "cambios_pancreaticos",
+      "frecuencia": 84
+    },
+    {
+      "termino": "posible",
+      "frecuencia": 55
+    },
+    {
+      "termino": "atrofia",
+      "frecuencia": 52
+    },
+    {
+      "termino": "absceso",
+      "frecuencia": 50
+    },
+    {
+      "termino": "piometra",
+      "frecuencia": 49
+    },
+    {
+      "termino": "evidencia_de",
+      "frecuencia": 40
+    },
+    {
+      "termino": "probable",
+      "frecuencia": 36
+    },
+    {
+      "termino": "hiperplasia",
+      "frecuencia": 35
+    },
+    {
+      "termino": "lesion",
+      "frecuencia": 34
+    },
+    {
+      "termino": "sin_evidencia",
+      "frecuencia": 33
+    },
+    {
+      "termino": "nefromegalia",
+      "frecuencia": 29
+    },
+    {
+      "termino": "obstruccion",
+      "frecuencia": 24
+    },
+    {
+      "termino": "fibrosis",
+      "frecuencia": 22
+    },
+    {
+      "termino": "hematoma",
+      "frecuencia": 20
+    },
+    {
+      "termino": "ileitis",
+      "frecuencia": 19
+    },
+    {
+      "termino": "polipo",
+      "frecuencia": 17
+    }
+  ],
+  "top_lateralidades": [
+    {
+      "valor": "bilateral",
+      "frecuencia": 3299
+    },
+    {
+      "valor": "izquierdo",
+      "frecuencia": 600
+    },
+    {
+      "valor": "derecho",
+      "frecuencia": 401
+    },
+    {
+      "valor": "ambos",
+      "frecuencia": 16
+    }
+  ],
+  "top_cualidades": [
+    {
+      "valor": "leve",
+      "frecuencia": 3746
+    },
+    {
+      "valor": "inflamatorio",
+      "frecuencia": 3502
+    },
+    {
+      "valor": "moderada",
+      "frecuencia": 1546
+    },
+    {
+      "valor": "infiltrativo",
+      "frecuencia": 1323
+    },
+    {
+      "valor": "severa",
+      "frecuencia": 877
+    },
+    {
+      "valor": "reactivo",
+      "frecuencia": 88
+    },
+    {
+      "valor": "cronica",
+      "frecuencia": 54
+    },
+    {
+      "valor": "dilatado",
+      "frecuencia": 14
+    },
+    {
+      "valor": "aguda",
+      "frecuencia": 13
+    },
+    {
+      "valor": "aumentado",
+      "frecuencia": 10
+    },
+    {
+      "valor": "degenerativo",
+      "frecuencia": 3
+    },
+    {
+      "valor": "hiperecoico",
+      "frecuencia": 3
+    },
+    {
+      "valor": "anecoico",
+      "frecuencia": 3
+    },
+    {
+      "valor": "disminuido",
+      "frecuencia": 2
+    },
+    {
+      "valor": "engrosado",
+      "frecuencia": 1
+    }
+  ],
+  "top_distribuciones": [
+    {
+      "valor": "focal",
+      "frecuencia": 311
+    },
+    {
+      "valor": "discreta",
+      "frecuencia": 160
+    },
+    {
+      "valor": "generalizada",
+      "frecuencia": 52
+    },
+    {
+      "valor": "difusa",
+      "frecuencia": 33
+    }
+  ]
+}
