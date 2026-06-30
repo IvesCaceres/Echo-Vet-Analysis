@@ -1080,7 +1080,128 @@ def build_f2(
              rows_written=n_map_esp + n_map_sexo + n_map_est + n_map_raza,
              rows_skipped=0, duration_ms=duration_ms,
              actor=actor, notes=str(metrics))
+
+    # --- Backfill cross-layer: silver_informes.dim_raza_id (Completion Release) ---
+    # Cierra el loop entre dim_raza/map_raza (poblados arriba) y silver_informes.
+    # F1 dejó esta columna en NULL como placeholder; F2 ahora la resuelve leyendo
+    # raw.informes.raza, cruzando con map_raza.valor_original y escribiendo
+    # map_raza.dim_raza_id. Idempotente: solo actualiza si el valor cambia.
+    backfill_metrics = backfill_silver_informes_raza(silver_engine, raw_engine)
+
+    metrics["backfill_raza"] = backfill_metrics
     return metrics
+
+
+def backfill_silver_informes_raza(
+    silver_engine: Engine, raw_engine: Engine,
+) -> dict[str, Any]:
+    """Puebla `silver_informes.dim_raza_id` a partir de raw.informes.raza + map_raza.
+
+    Algoritmo:
+      1. Carga map_raza (163 entradas) en memoria como dict {valor_original → dim_raza_id}.
+         Si map_raza.dim_raza_id es NULL (estado_revision='pendiente'), la entrada
+         queda con valor None y silver_informes.dim_raza_id permanecerá NULL.
+      2. Lee raw.informes (id, raza) para los 2893 informes.
+      3. Lee silver_informes.informe_id + dim_raza_id actual.
+      4. Para cada fila, calcula el dim_raza_id objetivo vía el lookup.
+      5. UPDATE solo si el valor cambió (idempotencia).
+      6. Transacción única.
+
+    No modifica ninguna otra columna de silver_informes.
+
+    Returns: dict con métricas detalladas (rows_updated, rows_skipped_no_change,
+    n_with_raza, n_without_raza, n_pendientes, coverage_pct).
+    """
+    t0 = time.monotonic()
+
+    # 1. Cargar map_raza en memoria.
+    map_raza_lookup: dict[str, int | None] = {}
+    with silver_engine.begin() as conn:
+        for valor_original, dim_raza_id in conn.execute(
+            select(map_raza.c.valor_original, map_raza.c.dim_raza_id)
+        ).all():
+            map_raza_lookup[valor_original] = dim_raza_id
+
+    if not map_raza_lookup:
+        # map_raza vacía → no se puede backfillear. Devolver métricas vacías
+        # en lugar de fallar para no romper el pipeline.
+        return {
+            "rows_scanned": 0,
+            "rows_updated": 0,
+            "rows_skipped_no_change": 0,
+            "n_with_raza": 0,
+            "n_without_raza": 0,
+            "n_linked": 0,
+            "n_pendientes": 0,
+            "coverage_pct": 0.0,
+            "duration_ms": int((time.monotonic() - t0) * 1000),
+            "warning": "map_raza vacía — backfill omitido",
+        }
+
+    # 2. Leer raw.informes.raza
+    raw_raza: dict[int, str | None] = {}
+    with raw_engine.begin() as conn:
+        for rid, raza in conn.execute(
+            select(raw_informes.c.id, raw_informes.c.raza)
+        ).all():
+            raw_raza[rid] = raza
+
+    # 3-5. Recorrer silver_informes y aplicar UPDATE sólo si cambia.
+    n_scanned = 0
+    n_updated = 0
+    n_skipped = 0
+    n_with_raza = 0       # raw.raza no-vacía
+    n_without_raza = 0    # raw.raza NULL o vacía
+    n_linked = 0          # silver_informes.dim_raza_id NOT NULL después
+    n_pendientes = 0      # silver_informes con raw.raza pero map_raza.estado_revision='pendiente'
+
+    with silver_engine.begin() as conn:
+        for informe_id, current_dim_raza_id in conn.execute(
+            select(silver_informes.c.informe_id, silver_informes.c.dim_raza_id)
+        ).all():
+            n_scanned += 1
+            raw_val = raw_raza.get(informe_id)
+            raw_clean = (raw_val or "").strip() if raw_val else ""
+
+            if not raw_clean:
+                target = None
+                n_without_raza += 1
+            else:
+                n_with_raza += 1
+                target = map_raza_lookup.get(raw_clean)
+                if target is None:
+                    # Variante en RAW pero no en map_raza — caso anómalo;
+                    # contar como pendiente para diagnóstico.
+                    n_pendientes += 1
+
+            if target is not None:
+                n_linked += 1
+
+            # UPDATE solo si el valor efectivamente cambia (idempotencia).
+            if target != current_dim_raza_id:
+                conn.execute(
+                    silver_informes.update()
+                    .where(silver_informes.c.informe_id == informe_id)
+                    .values(dim_raza_id=target)
+                )
+                n_updated += 1
+            else:
+                n_skipped += 1
+
+    coverage_pct = round(100.0 * n_linked / n_scanned, 2) if n_scanned else 0.0
+    duration_ms = int((time.monotonic() - t0) * 1000)
+
+    return {
+        "rows_scanned": n_scanned,
+        "rows_updated": n_updated,
+        "rows_skipped_no_change": n_skipped,
+        "n_with_raza": n_with_raza,
+        "n_without_raza": n_without_raza,
+        "n_linked": n_linked,
+        "n_pendientes": n_pendientes,
+        "coverage_pct": coverage_pct,
+        "duration_ms": duration_ms,
+    }
 
 
 def _log_run(

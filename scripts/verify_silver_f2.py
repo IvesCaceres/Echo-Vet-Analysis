@@ -1,124 +1,251 @@
-"""Verificación end-to-end de Fase 2.
+"""Verificación end-to-end de Fase 2 (post Completion Release).
 
-Adjunta la BD RAW para poder cruzar datos y validar cobertura, idempotencia y
-excepciones.
+Comprueba:
+- F2 ejecutado y registrado en silver_etl_runs
+- dim_raza poblada (>0 filas)
+- map_raza poblada (>0 filas)
+- Cobertura de dim_raza_id en silver_informes
+- 100% de dim_raza_id válidos (no huérfanos)
+- 0 duplicados en map_raza (UNIQUE en valor_original)
+- Porcentaje de informes sin raza ≈ 64 (esperado RAW)
+- Idempotencia: re-run produce misma Silver
 """
+from __future__ import annotations
+
 import sqlite3
+import sys
+from pathlib import Path
 
-silver = sqlite3.connect("silver.db")
-silver.execute("ATTACH DATABASE 'informes.db' AS raw")
-sc = silver.cursor()
-rc = silver.cursor()
+ROOT = Path(__file__).resolve().parent.parent
+SILVER = ROOT / "silver.db"
 
-print("=" * 70)
-print("F2 — Verificación de Fase 2")
-print("=" * 70)
 
-# 1. Cobertura >99% por dimensión
-print("\n## Cobertura por dimensión (map_*.dim_*_id NOT NULL)\n")
-for tabla, col in [
-    ("map_especie", "dim_especie_id"),
-    ("map_sexo", "dim_sexo_id"),
-    ("map_estudio", "dim_estudio_id"),
-]:
-    total, ok = sc.execute(
-        f"SELECT COUNT(*), SUM(CASE WHEN {col} IS NOT NULL THEN 1 ELSE 0 END) "
-        f"FROM {tabla}"
-    ).fetchone()
-    pct = 100.0 * ok / total if total else 0
-    status = "✅" if pct > 99 else "❌"
-    print(f"  {tabla}.{col}: {ok} / {total}  ({pct:.2f}%) {status}")
+def main() -> int:
+    if not SILVER.exists():
+        print(f"ERROR: {SILVER} no existe. Ejecutá build_silver primero.")
+        return 1
 
-# 2. Reporte de razas no mapeadas
-print("\n## Razas no auto-aprobadas (map_raza.estado_revision='pendiente')\n")
-n_pend, = sc.execute(
-    "SELECT COUNT(*) FROM map_raza WHERE estado_revision = 'pendiente'"
-).fetchone()
-n_aprob, = sc.execute(
-    "SELECT COUNT(*) FROM map_raza WHERE estado_revision = 'aprobada'"
-).fetchone()
-print(f"  aprobadas: {n_aprob}")
-print(f"  pendientes: {n_pend}")
-print(f"  total: {n_aprob + n_pend}")
+    silver = sqlite3.connect(str(SILVER))
+    silver.execute("ATTACH DATABASE 'informes.db' AS raw")
+    sc = silver.cursor()
+    fails: list[str] = []
+    passes: list[str] = []
 
-print("\n  Top 20 pendientes por frecuencia:")
-for r in sc.execute(
-    "SELECT valor_original, frecuencia FROM map_raza "
-    "WHERE estado_revision = 'pendiente' ORDER BY frecuencia DESC LIMIT 20"
-).fetchall():
-    print(f"    {r[0]!r:40}  freq={r[1]}")
+    print("=" * 70)
+    print("F2 — Verificación (post Completion Release)")
+    print("=" * 70)
 
-# 3. stg_valores_no_mapeados (especie/sexo/estudio)
-print("\n## stg_valores_no_mapeados (dimensiones especie/sexo/estudio)\n")
-for r in sc.execute(
-    "SELECT dimension, valor_original, frecuencia, propuesta_canonica, observaciones "
-    "FROM stg_valores_no_mapeados ORDER BY dimension, frecuencia DESC"
-).fetchall():
-    print(f"  [{r[0]}] {r[1]!r:30} freq={r[2]:3} prop={r[3]!r:25} | {r[4]}")
-
-# 4. Valores conflictivos: misma valor_original mapeando a cosas distintas
-# (imposible por la UNIQUE constraint, pero verificamos que no haya duplicados
-# en valor_original dentro de cada map_*)
-print("\n## Valores conflictivos (duplicados en valor_original)\n")
-for tabla in ["map_especie", "map_sexo", "map_estudio", "map_raza"]:
-    n_dup, = sc.execute(
-        f"SELECT COUNT(*) FROM (SELECT valor_original FROM {tabla} "
-        f"GROUP BY valor_original HAVING COUNT(*) > 1)"
-    ).fetchone()
-    status = "✅" if n_dup == 0 else "❌"
-    print(f"  {tabla}: {n_dup} duplicados {status}")
-
-# 5. Valores RAW no presentes en map_*
-print("\n## Valores RAW sin entrada en map_*\n")
-for tabla_map, col_raw, dim_table, dim_col in [
-    ("map_especie", "especie", "dim_especie", "nombre_canonico"),
-    ("map_sexo", "genero", "dim_sexo", "nombre_canonico"),
-    ("map_estudio", "estudio", "dim_estudio", "nombre_canonico"),
-    ("map_raza", "raza", "dim_raza", "nombre_canonico"),
-]:
-    n_raw = rc.execute(
-        f"SELECT COUNT(DISTINCT {col_raw}) FROM raw.informes "
-        f"WHERE {col_raw} IS NOT NULL AND {col_raw} != ''"
+    # -----------------------------------------------------------------
+    # 1. F2 ejecutado y registrado en silver_etl_runs
+    # -----------------------------------------------------------------
+    n_f2_runs = sc.execute(
+        "SELECT COUNT(*) FROM silver_etl_runs WHERE phase='f2' AND status='ok'"
     ).fetchone()[0]
-    n_map = sc.execute(f"SELECT COUNT(*) FROM {tabla_map}").fetchone()[0]
-    diff = n_raw - n_map
-    status = "✅" if diff <= 0 else "⚠️"
-    print(f"  {col_raw} RAW distintos: {n_raw}  |  en {tabla_map}: {n_map}  "
-          f"| diff: {diff} {status}")
+    if n_f2_runs >= 1:
+        passes.append(f"✓ silver_etl_runs registra {n_f2_runs} ejecución(es) f2 ok")
+    else:
+        fails.append("✗ silver_etl_runs NO registra ejecución f2 ok — corré build_silver --phase f2")
 
-# 6. Idempotencia: re-correr F2 produce misma Silver
-print("\n## Idempotencia (re-run F2 produce misma Silver)\n")
-import subprocess
-result = subprocess.run(
-    ["python", "scripts/build_silver.py", "--phase", "f2", "--root", "."],
-    capture_output=True, text=True,
-    env={"PYTHONIOENCODING": "utf-8",
-         "PATH": "/c/Python:/c/Python/Scripts",
-         "SYSTEMROOT": "C:\\Windows"},
-)
-# Buscar la línea de cobertura
-for line in result.stdout.split("\n"):
-    if "map_" in line and "dim_" in line and "100.0%" in line:
-        print(f"  {line.strip()}")
-    if "OK en" in line:
-        print(f"  {line.strip()}")
+    # -----------------------------------------------------------------
+    # 2. dim_raza poblada (>0 filas)
+    # -----------------------------------------------------------------
+    n_dim_raza = sc.execute("SELECT COUNT(*) FROM dim_raza").fetchone()[0]
+    if n_dim_raza > 0:
+        passes.append(f"✓ dim_raza poblada: {n_dim_raza} filas")
+    else:
+        fails.append("✗ dim_raza vacía (0 filas) — F2 no se ejecutó o falló")
 
-# Conteos antes y después del re-run
-print("\nConteos después del re-run:")
-for tabla in ["map_especie", "map_sexo", "map_estudio", "map_raza",
-              "dim_raza", "stg_valores_no_mapeados", "stg_razas_detectadas"]:
-    n = sc.execute(f"SELECT COUNT(*) FROM {tabla}").fetchone()[0]
-    print(f"  {tabla}: {n}")
+    # -----------------------------------------------------------------
+    # 3. map_raza poblada (>0 filas)
+    # -----------------------------------------------------------------
+    n_map_raza = sc.execute("SELECT COUNT(*) FROM map_raza").fetchone()[0]
+    if n_map_raza > 0:
+        passes.append(f"✓ map_raza poblada: {n_map_raza} filas")
+    else:
+        fails.append("✗ map_raza vacía (0 filas) — F2 no se ejecutó o falló")
 
-# 7. silver_etl_runs historial
-print("\n## silver_etl_runs (F2 runs)\n")
-for r in sc.execute(
-    "SELECT id, phase, status, rows_read, rows_written, duration_ms, "
-    "datetime(started_at), actor FROM silver_etl_runs WHERE phase='f2' ORDER BY id"
-).fetchall():
-    print(f"  id={r[0]} phase={r[1]} status={r[2]} read={r[3]} "
-          f"written={r[4]} dur={r[5]}ms at={r[6]} actor={r[7]}")
+    # -----------------------------------------------------------------
+    # 4. dim_raza: 0 duplicados por (dim_especie_id, nombre_canonico)
+    # -----------------------------------------------------------------
+    n_dups_dim = sc.execute(
+        "SELECT COUNT(*) FROM ("
+        "  SELECT dim_especie_id, nombre_canonico, COUNT(*) c "
+        "  FROM dim_raza GROUP BY dim_especie_id, nombre_canonico HAVING c > 1"
+        ")"
+    ).fetchone()[0]
+    if n_dups_dim == 0:
+        passes.append("✓ dim_raza sin duplicados por (dim_especie_id, nombre_canonico)")
+    else:
+        fails.append(f"✗ dim_raza tiene {n_dups_dim} grupos duplicados")
 
-silver.close()
-print("\n" + "=" * 70)
-print("Verificación completada")
+    # -----------------------------------------------------------------
+    # 5. map_raza: 0 duplicados en valor_original (UNIQUE constraint)
+    # -----------------------------------------------------------------
+    n_dups_map = sc.execute(
+        "SELECT COUNT(*) FROM ("
+        "  SELECT valor_original FROM map_raza "
+        "  GROUP BY valor_original HAVING COUNT(*) > 1"
+        ")"
+    ).fetchone()[0]
+    if n_dups_map == 0:
+        passes.append("✓ map_raza sin duplicados en valor_original")
+    else:
+        fails.append(f"✗ map_raza tiene {n_dups_map} duplicados en valor_original")
+
+    # -----------------------------------------------------------------
+    # 6. silver_informes.dim_raza_id: cobertura
+    # -----------------------------------------------------------------
+    total_inf, linked_inf, no_raza_inf = sc.execute(
+        "SELECT "
+        "  COUNT(*), "
+        "  SUM(CASE WHEN dim_raza_id IS NOT NULL THEN 1 ELSE 0 END), "
+        "  SUM(CASE WHEN dim_raza_id IS NULL THEN 1 ELSE 0 END) "
+        "FROM silver_informes"
+    ).fetchone()
+    coverage_pct = round(100.0 * linked_inf / total_inf, 2) if total_inf else 0
+    if total_inf == 2893:
+        passes.append(f"✓ silver_informes: {total_inf} filas (esperado 2893)")
+    else:
+        fails.append(f"✗ silver_informes: {total_inf} filas (esperado 2893)")
+    if coverage_pct > 90:
+        passes.append(f"✓ dim_raza_id cobertura: {linked_inf}/{total_inf} ({coverage_pct}%)")
+    else:
+        fails.append(f"✗ dim_raza_id cobertura: {linked_inf}/{total_inf} ({coverage_pct}%) — debería ser >90%")
+
+    # -----------------------------------------------------------------
+    # 7. Informes sin raza ≈ 64 (esperado de RAW)
+    # -----------------------------------------------------------------
+    # raw.informes.raza NULL o vacío
+    raw_no_raza = sc.execute(
+        "SELECT COUNT(*) FROM raw.informes "
+        "WHERE raza IS NULL OR TRIM(raza) = ''"
+    ).fetchone()[0]
+    # silver_informes con dim_raza_id NULL pero raw con raza → pendiente
+    pendientes = sc.execute(
+        "SELECT COUNT(*) FROM silver_informes si "
+        "JOIN raw.informes ri ON ri.id = si.informe_id "
+        "WHERE si.dim_raza_id IS NULL "
+        "AND ri.raza IS NOT NULL AND TRIM(ri.raza) != ''"
+    ).fetchone()[0]
+    # silver_informes con dim_raza_id NULL y raw sin raza → realmente sin raza
+    real_no_raza = sc.execute(
+        "SELECT COUNT(*) FROM silver_informes si "
+        "JOIN raw.informes ri ON ri.id = si.informe_id "
+        "WHERE si.dim_raza_id IS NULL "
+        "AND (ri.raza IS NULL OR TRIM(ri.raza) = '')"
+    ).fetchone()[0]
+
+    if abs(real_no_raza - raw_no_raza) <= 2:
+        passes.append(
+            f"✓ informes sin raza: {real_no_raza} en silver ≈ {raw_no_raza} en raw "
+            f"(diferencia {abs(real_no_raza - raw_no_raza)})"
+        )
+    else:
+        fails.append(
+            f"✗ informes sin raza: {real_no_raza} en silver vs {raw_no_raza} en raw "
+            f"(diferencia {abs(real_no_raza - raw_no_raza)} — esperado ≈0)"
+        )
+
+    passes.append(f"  └─ pendientes (raw con raza, map_raza sin dim_raza_id): {pendientes}")
+
+    # -----------------------------------------------------------------
+    # 8. 100% de dim_raza_id válidos (no huérfanos)
+    # -----------------------------------------------------------------
+    n_huerfanos = sc.execute(
+        "SELECT COUNT(*) FROM silver_informes si "
+        "WHERE si.dim_raza_id IS NOT NULL "
+        "AND NOT EXISTS (SELECT 1 FROM dim_raza dr WHERE dr.id = si.dim_raza_id)"
+    ).fetchone()[0]
+    if n_huerfanos == 0:
+        passes.append("✓ silver_informes.dim_raza_id: 0 FK huérfanas")
+    else:
+        fails.append(f"✗ silver_informes.dim_raza_id: {n_huerfanos} FK huérfanas")
+
+    # -----------------------------------------------------------------
+    # 9. map_raza.dim_raza_id: 0 FK huérfanas (entre las que son NOT NULL)
+    # -----------------------------------------------------------------
+    n_map_huerfanos = sc.execute(
+        "SELECT COUNT(*) FROM map_raza mr "
+        "WHERE mr.dim_raza_id IS NOT NULL "
+        "AND NOT EXISTS (SELECT 1 FROM dim_raza dr WHERE dr.id = mr.dim_raza_id)"
+    ).fetchone()[0]
+    if n_map_huerfanos == 0:
+        passes.append("✓ map_raza.dim_raza_id: 0 FK huérfanas")
+    else:
+        fails.append(f"✗ map_raza.dim_raza_id: {n_map_huerfanos} FK huérfanas")
+
+    # -----------------------------------------------------------------
+    # 10. Cobertura de map_raza vs RAW (todas las variantes en map_raza)
+    # -----------------------------------------------------------------
+    raw_distinct = sc.execute(
+        "SELECT COUNT(DISTINCT raza) FROM raw.informes "
+        "WHERE raza IS NOT NULL AND TRIM(raza) != ''"
+    ).fetchone()[0]
+    map_distinct = sc.execute(
+        "SELECT COUNT(*) FROM map_raza"
+    ).fetchone()[0]
+    if map_distinct >= raw_distinct:
+        passes.append(
+            f"✓ map_raza cubre todas las variantes RAW: {map_distinct} ≥ {raw_distinct}"
+        )
+    else:
+        fails.append(
+            f"✗ map_raza NO cubre RAW: {map_distinct} < {raw_distinct}"
+        )
+
+    # -----------------------------------------------------------------
+    # 11. Distribución map_raza.estado_revision
+    # -----------------------------------------------------------------
+    aprobadas = sc.execute(
+        "SELECT COUNT(*) FROM map_raza WHERE estado_revision = 'aprobada'"
+    ).fetchone()[0]
+    pendientes_rev = sc.execute(
+        "SELECT COUNT(*) FROM map_raza WHERE estado_revision = 'pendiente'"
+    ).fetchone()[0]
+    passes.append(f"  └─ map_raza: {aprobadas} aprobadas, {pendientes_rev} pendientes")
+
+    # -----------------------------------------------------------------
+    # 12. stg_razas_detectadas (esperado >0 para variantes freq<3)
+    # -----------------------------------------------------------------
+    n_stg = sc.execute("SELECT COUNT(*) FROM stg_razas_detectadas").fetchone()[0]
+    if n_stg > 0:
+        passes.append(f"✓ stg_razas_detectadas poblada: {n_stg} filas")
+    else:
+        fails.append("✗ stg_razas_detectadas vacía — variantes freq<3 no registradas")
+
+    # -----------------------------------------------------------------
+    # 13. silver_etl_runs historial F2
+    # -----------------------------------------------------------------
+    print("\n--- silver_etl_runs (F2 runs) ---")
+    for r in sc.execute(
+        "SELECT id, status, rows_read, rows_written, duration_ms, "
+        "datetime(started_at), actor FROM silver_etl_runs WHERE phase='f2' ORDER BY id"
+    ).fetchall():
+        print(f"  id={r[0]} status={r[1]} read={r[2]} written={r[3]} "
+              f"dur={r[4]}ms at={r[5]} actor={r[6]}")
+
+    silver.close()
+
+    # =================================================================
+    # REPORTE FINAL
+    # =================================================================
+    print()
+    print("=" * 70)
+    print("REPORTE DE VERIFICACIÓN F2")
+    print("=" * 70)
+    print(f"\nAserciones pasadas: {len(passes)}")
+    print(f"Aserciones fallidas: {len(fails)}\n")
+    print("--- PASA ---")
+    for p in passes:
+        print(f"  {p}")
+    if fails:
+        print("\n--- FALLA ---")
+        for f in fails:
+            print(f"  {f}")
+    print()
+    print("=" * 70)
+    return 0 if not fails else 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

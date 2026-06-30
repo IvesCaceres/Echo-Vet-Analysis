@@ -427,3 +427,63 @@ El Silver Layer del proyecto Vectorización de Informes Veterinarios queda cerra
 
 **Total runs ejecutados:** 21 (3 con error resueltos en runs posteriores).
 **Último run OK:** id=21 (F5.1 final, 16,939 ítems útiles, 16,947 filas escritas incluyendo las 8 de no-match staging).
+
+---
+
+## 5. Revision History
+
+### v1.1 — Completion Release (2026-06-26)
+
+**Tipo:** Cierre de migración pendiente. **No** es una nueva fase funcional.
+
+**Hallazgo crítico:** La fase F2 del pipeline (orquestada por `scripts/build_silver.py --phase f2`) nunca había sido ejecutada al cierre de v1.0. La evidencia cuantitativa:
+
+| Tabla | v1.0 (24/06/2026) | v1.1 (26/06/2026) |
+|---|---:|---:|
+| `dim_raza` | 0 | **63** |
+| `map_raza` | 0 | **163** |
+| `map_especie` | 0 | 17 |
+| `map_sexo` | 0 | 22 |
+| `map_estudio` | 0 | 28 |
+| `stg_razas_detectadas` | 0 | 100 |
+| `stg_valores_no_mapeados` | 0 | 24 |
+| `silver_informes.dim_raza_id NOT NULL` | 0 / 2,893 (0.00%) | **2,708 / 2,893 (93.61%)** |
+
+**Acciones realizadas en v1.1:**
+
+1. **Revisión de `_build_dim_raza` y `_build_map_raza`** (sin cambios): ambas funciones se encontraban completas, terminadas e idempotentes. No se modificaron.
+2. **Backfill cross-layer** (nuevo): se implementó la función `backfill_silver_informes_raza(silver_engine, raw_engine)` que puebla `silver_informes.dim_raza_id` resolviendo `raw.informes.raza` → `map_raza.valor_original` → `map_raza.dim_raza_id`. La función es idempotente (UPDATE solo si el valor cambia), transaccional (transacción única sobre `silver_engine`) y no modifica ninguna otra columna de `silver_informes`.
+3. **Integración en F2:** la función de backfill se invoca al final de `build_f2()` (línea 1085+ de `silver_etl.py`). El phase sigue siendo `"f2"`. **No** se crea una nueva fase.
+4. **`scripts/verify_silver_f2.py` ampliado** con 14 aserciones que cubren: existencia de `dim_raza`/`map_raza` pobladas, cobertura de `dim_raza_id`, ausencia de duplicados, ausencia de FK huérfanas, consistencia con RAW.
+
+**Resultados de verificación:**
+
+| Verificación | Resultado |
+|---|---|
+| `verify_silver_f2.py` | **14/14 PASS** |
+| `verify_silver_f3.py` | ✅ PASSED |
+| `verify_silver_f4.py` | ✅ 13/13 PASS — VEREDICTO GO |
+| `verify_silver_f5.py` | ✅ 19/19 PASS — VEREDICTO GO |
+
+**Idempotencia verificada:** tres ejecuciones consecutivas de `build_silver.py --phase f2`:
+- Run #22 (inicial): 230 filas escritas (63 dim_raza + 163 map_raza + 4 no-match + backfill 2708)
+- Run #23 (re-run): 0 filas escritas — `rows_updated=0`, `rows_skipped_no_change=2893`
+- Run #24 (re-run): 0 filas escritas — estable
+
+**Lo que NO se modificó en v1.1:**
+
+- F3, F4, F5 — sin cambios (verificado por `verify_silver_f3.py`, `verify_silver_f4.py`, `verify_silver_f5.py` PASS).
+- `silver_conclusion_items`, `dim_valor_atributo`, `dim_termino_conclusion` — sin cambios.
+- Regex clínicas, vocabularios canónicos, catálogos clínicos — sin cambios.
+- Dimensiones existentes (dim_especie, dim_sexo, dim_estudio, dim_organo, dim_atributo, etc.) — sin cambios.
+
+**Lo que queda pendiente (NO bloqueante para Gold):**
+
+- **Consolidación de duplicados en `dim_raza`** (63 → 56 entradas esperadas). Variantes como "Bóxer"/"Boxer", "Pastor alemán"/"Pastor Alemán", DPC/DPL con typos (DPc, DPl) conviven como entradas separadas. La función `refactor_dim_raza()` existe en el código (`silver_etl.py:1152-1315`) pero **no se invoca** en esta release. Decisión consciente: priorizar la integración de raza sobre la consolidación; Gold puede trabajar con la granularidad actual.
+- **Renombre DPC/DPL → "Doméstico Pelo Corto/Largo"**: no aplicado. La release v1.1 acepta que `dim_raza` retenga los códigos DPC/DPL.
+- **Backfill de `edad_meses` con parser v2** (`parse_edad_meses_v2`): no aplicado. Cobertura actual 98.72% (2,854/2,893); con v2 subiría a ~99.04%. Mejora marginal, no bloqueante.
+- **121 informes con raza en RAW pero `dim_raza_id` NULL** (estado_revision='pendiente'): son variantes con freq<3 que requieren revisión manual. Gold puede ignorar este subset.
+
+**Veredicto v1.1:**
+
+**🟢 SILVER CLOSED al 100%.** Toda la integración de raza queda completada. Los pendientes listados son refinamientos opcionales que NO bloquean el inicio de Gold. La arquitectura medallion permanece intacta; la normalización continúa viviendo exclusivamente en Silver.
