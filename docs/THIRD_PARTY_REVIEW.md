@@ -1,6 +1,6 @@
 # Dependency licensing and provenance review
 
-MIT is proposed for original project software only; it is not yet adopted. This is a technical inventory, not a legal opinion or proof of original-code ownership.
+MIT is adopted for original project software only, following the owner's explicit authorship/licensing declaration. This is a technical inventory, not a legal opinion or proof of original-code ownership.
 
 No third-party environment, library source/binary, font file or original Git history is vendored. requirements.txt requests separately installed packages. Upstream licenses and notices remain applicable to those packages and are not replaced by this project proposal.
 
@@ -24,11 +24,11 @@ No third-party environment, library source/binary, font file or original Git his
 
 The active installed dependency closure contains 13 distributions. Exact installed notice-file locations, sizes and hashes were inspected privately. Classifiers are metadata evidence, not complete grants; NumPy wheels and other distributions can contain additional component notices. Python, installers, optional extras, future platforms and bundled distributions are outside this source-only inventory.
 
-No obvious runtime-import licensing blocker to the proposed MIT scope was observed. This is not exhaustive compatibility certification. Before vendoring packages, fonts, wheels or installers, preserve and review complete upstream notices and component terms. Matplotlib-rendered aggregate PNGs are included; Matplotlib/font software files are not.
+No obvious runtime-import licensing blocker to the software MIT scope was observed. This is not exhaustive compatibility certification. Before vendoring packages, fonts, wheels or installers, preserve and review complete upstream notices and component terms. Matplotlib-rendered aggregate PNGs are included; Matplotlib/font software files are not.
 
 ## Source-code rights gate
 
-The four previously allowlisted source notebook hashes still match. Their code cells contain no detected copyright/SPDX, explicit attribution or external-URL markers. That does not prove exclusive authorship or a right to remove notices from unexamined upstream sources. Ownership, contributor/contract restrictions, exact copyright holder and final MIT adoption remain pending owner confirmation.
+The four previously allowlisted source notebook hashes still match. Their code cells contain no detected copyright/SPDX, explicit attribution or external-URL markers. That does not prove exclusive authorship or a right to remove notices from unexamined upstream sources. The owner has now confirmed original code authorship with Claude assistance and authorized MIT, naming Ives Cáceres as copyright holder for 2026. No additional third-party fragments were identified in the reviewed source; this is not a certification of unexamined upstream rights. Installed dependency notice hashes were reverified unchanged at adoption.
 
 ## References
 

@@ -2,7 +2,7 @@
 
 Python and Jupyter workflows for describing a private corpus of veterinary ultrasound reports while keeping original reports and individual clinical data private.
 
-**Local publication candidate. Remote publication is not authorized. MIT is proposed for original code, conditional on rights confirmation; no active license has been adopted.**
+**Local publication candidate. Remote publication is not authorized. Original code is distributed under the [MIT License](LICENSE), copyright (c) 2026 Ives Cáceres.**
 
 ## Real descriptive results
 
@@ -101,6 +101,6 @@ The numerical disclosure screen checked cells and complements against a prelimin
 
 See [disclosure policy](docs/DISCLOSURE_POLICY.md), [methods](docs/METHODS.md), [privacy boundaries](docs/PRIVACY.md), [study protocol](docs/STUDY_PROTOCOL.md) and [third-party review](docs/THIRD_PARTY_REVIEW.md). Original reports, RAW/Silver/Gold databases, clinical records, historical Git objects, logs, backups and credentials are not included. The old repository remains separate; no inherited Git history is supplied.
 
-## Licensing proposal and result provenance
+## License and result provenance
 
-See [licensing scope](docs/LICENSING.md), [result provenance](docs/RESULTS_PROVENANCE.md) and [dependency notices](docs/THIRD_PARTY_REVIEW.md). The conditional MIT proposal covers original software only; it does not grant rights to clinical inputs or automatically license the editorial assets. Exact ownership and the copyright holder remain to be confirmed.
+See [licensing scope](docs/LICENSING.md), [result provenance](docs/RESULTS_PROVENANCE.md) and [dependency notices](docs/THIRD_PARTY_REVIEW.md). The owner confirmed authorship with Claude assistance and authorized MIT for original software. The software license does not grant rights to clinical inputs, replace third-party licenses or automatically license the editorial statistical assets. Aggregate publication permission remains separately documented.

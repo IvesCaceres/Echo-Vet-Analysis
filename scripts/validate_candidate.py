@@ -48,7 +48,7 @@ def validate(root):
         reviewed_figure = approved.get(relative) == "aggregate_figure"
         allowed_json = relative in {"synthetic/schema.json", "published/approved-manifest.json", "published/editorial-manifest.json"} or approved.get(relative) == "aggregate_package"
         reviewed_table = approved.get(relative) == "aggregate_table"
-        if p.name != ".gitignore" and not allowed_json and not reviewed_figure and not reviewed_table and p.suffix not in allowed:
+        if p.name not in {".gitignore", "LICENSE"} and not allowed_json and not reviewed_figure and not reviewed_table and p.suffix not in allowed:
             issues.append({"path": relative, "category": "unapproved file type"})
         raw = p.read_bytes()
         if raw.startswith((b"SQLite format 3\x00", b"PK\x03\x04", b"%PDF")) or (raw.startswith(b"\x89PNG") and not reviewed_figure):
