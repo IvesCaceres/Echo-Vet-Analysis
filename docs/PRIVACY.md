@@ -2,7 +2,7 @@
 
 Original clinical reports, populated clinical databases, individual records, private case adjudications, logs and inherited Git objects are excluded. Gold is not assumed anonymous.
 
-The seven artifacts under published/editorial/ contain exact hash-reviewed aggregate tables, figures and methodology text. The owner specifically authorized their incorporation into this local candidate and confirmed the responsible veterinarian permits derived aggregate statistics. This does not authorize remote publication or establish all third-party rights independently.
+The seven artifacts under published/editorial/ contain exact hash-reviewed aggregate tables, figures and methodology text. The owner specifically authorized their local incorporation and subsequent publication, and confirmed the responsible veterinarian permits derived aggregate statistics. These authorizations do not cover additional outputs or independently establish all third-party rights.
 
 PUBLIC_DEMO uses invented data only. The auxiliary viewer defaults to SYNTHETIC_DEMO; its explicit REAL_AGGREGATED mode reads only the hash-reviewed aggregate CSVs, never a clinical database. PRIVATE_ANALYSIS can produce individual outputs and must use external private output storage; do not save its outputs here.
 

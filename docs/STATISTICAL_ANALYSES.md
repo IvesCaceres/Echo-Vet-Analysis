@@ -2,7 +2,7 @@
 
 This inventory reuses the existing project audit and a targeted read-only inspection of analysis code. No clinical database was queried and no existing statistical values were exported. Presence of an analysis in code does not establish its validity, successful execution, or permission to publish its output.
 
-## Existing candidate notebooks
+## Reviewed analytical notebooks
 
 | Notebook | Can use private Gold? | Public real-result suitability |
 |---|---|---|
@@ -37,4 +37,4 @@ The original file names use “prevalence.” Public interpretation should norma
 4. Review group comparisons only after disclosure-safe contingency tables and methodological checks.
 5. Review adjusted models and sensitivity results separately; do not publish private diagnostics or fitted values.
 
-The exact editorial bundle now includes owner-approved local descriptive results for 3,364 Gold records and 14,245 event rows. Unique animals, eligible clinical cohorts, period, clinical conclusions, confidence intervals, significance and model coefficients remain unverified or excluded. No inferential or diagnostic release is approved.
+The published editorial bundle includes owner-approved descriptive results for 3,364 Gold records and 14,245 event rows. Unique animals, eligible clinical cohorts, period, clinical conclusions, confidence intervals, significance and model coefficients remain unverified or excluded. No inferential or diagnostic release is approved.

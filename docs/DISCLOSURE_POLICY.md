@@ -1,6 +1,6 @@
 # Statistical disclosure review policy — proposal
 
-**The threshold remains preliminary. The owner approved seven exact aggregate artifacts for this local candidate; remote publication remains unauthorized. This is not blanket approval of new outputs or all policy choices.** Aggregation is not anonymity. This policy concerns outputs, not release of anonymized individual datasets.
+**The threshold remains preliminary. The owner approved seven exact aggregate artifacts and separately authorized their publication in this repository. This is not blanket approval of new outputs or all policy choices.** Aggregation is not anonymity. This policy concerns outputs, not release of anonymized individual datasets.
 
 ## Mandatory scope of review
 

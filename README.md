@@ -2,11 +2,11 @@
 
 Python and Jupyter workflows for describing a private corpus of veterinary ultrasound reports while keeping original reports and individual clinical data private.
 
-**Local publication candidate. Remote publication is not authorized. Original code is distributed under the [MIT License](LICENSE), copyright (c) 2026 Ives Cáceres.**
+**Public repository. Original code is distributed under the [MIT License](LICENSE), copyright (c) 2026 Ives Cáceres.**
 
 ## Real descriptive results
 
-The owner approved the exact seven-file aggregate editorial bundle for this local candidate after hash verification and final review. These results are **REAL_AGGREGATED**: calculated from a real private Gold snapshot, not synthetic demonstrations. They are descriptive corpus statistics, not clinically validated findings or population prevalence estimates.
+The exact seven-file aggregate editorial bundle is publicly available following hash verification, final review and the owner's separate publication authorization. These results are **REAL_AGGREGATED**: calculated from a real private Gold snapshot, not synthetic demonstrations. They are descriptive corpus statistics, not clinically validated findings or population prevalence estimates.
 
 | Metric | Observed count | Unit |
 |---|---:|---|
@@ -97,7 +97,7 @@ The real tables reuse verified aggregate artifacts from an earlier read-only ana
 
 Selection/referral patterns, an unverified population sampling frame, repeated animals/episodes, possible content duplicates, unresolved coding and extraction errors limit interpretation. No causal, population-level, diagnostic-accuracy or clinical-validation claim is made. Age/time summaries and their linked denominators, diagnostic frequencies, clinical free text and individual plots are excluded from this editorial release.
 
-The numerical disclosure screen checked cells and complements against a preliminary threshold of 10, alongside linked margins and text/figure consistency. That threshold is not an anonymity guarantee. Historical exposures, external copies and linkage remain possible. The local approval is tied to exact file hashes; [editorial-manifest.json](published/editorial-manifest.json) is an administrative allowlist, not a digital signature or remote-publication permission. Any changed artifact must be reviewed again.
+The numerical disclosure screen checked cells and complements against a preliminary threshold of 10, alongside linked margins and text/figure consistency. That threshold is not an anonymity guarantee. Historical exposures, external copies and linkage remain possible. The reviewed content is tied to exact file hashes; [editorial-manifest.json](published/editorial-manifest.json) preserves the prepublication local-approval record. Its local-only fields describe that historical review stage, not the current publication status. It is an administrative allowlist, not a digital signature or permission to publish additional content. The owner separately authorized publication of this exact bundle. Any changed artifact must be reviewed again.
 
 See [disclosure policy](docs/DISCLOSURE_POLICY.md), [methods](docs/METHODS.md), [privacy boundaries](docs/PRIVACY.md), [study protocol](docs/STUDY_PROTOCOL.md) and [third-party review](docs/THIRD_PARTY_REVIEW.md). Original reports, RAW/Silver/Gold databases, clinical records, historical Git objects, logs, backups and credentials are not included. The old repository remains separate; no inherited Git history is supplied.
 

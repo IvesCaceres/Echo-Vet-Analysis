@@ -1,10 +1,10 @@
 # Controlled aggregate publication pipeline
 
-## Current local candidate
+## Published repository
 
-The preceding private read-only analysis produced aggregate artifacts. The owner confirmed aggregate-publication permission from the responsible veterinarian, then specifically approved the seven selected files for incorporation into the local candidate, conditional on exact hashes and satisfactory final review. No new clinical query was executed for incorporation.
+The preceding private read-only analysis produced aggregate artifacts. The owner confirmed aggregate-publication permission from the responsible veterinarian, approved the seven selected files for local incorporation conditional on exact hashes and satisfactory final review, and subsequently authorized their publication. No new clinical query was executed for incorporation.
 
-The result is the REAL_AGGREGATED editorial bundle under published/editorial/: four CSV tables, two PNG figures and one methodology/results document. All seven are byte-identical to the selected private sources. published/editorial-manifest.json records their exact hashes, permission basis and local approval scope. Remote publication remains unauthorized.
+The result is the REAL_AGGREGATED editorial bundle under published/editorial/: four CSV tables, two PNG figures and one methodology/results document. All seven are byte-identical to the selected private sources. published/editorial-manifest.json preserves their exact hashes, permission basis and prepublication local-approval scope. Its local-only fields are historical review metadata, not the current publication status. The owner separately authorized publication of this exact bundle; additional outputs still require review and authorization.
 
 editorial_release.py admits only this fixed seven-path layout, with strict predefined CSV fields/labels, shared denominators, proportions, partition sums, small-cell/complement checks and cross-table coverage consistency. The candidate validator rejects unregistered CSV/images and changed approved content. This administrative allowlist is not a signature, consent document or anonymity proof.
 

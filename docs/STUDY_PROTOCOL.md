@@ -1,6 +1,6 @@
 # Study protocol and claims register — verification pending
 
-The exact local editorial bundle reports 3,364 Gold report records and 14,245 extraction-event rows. These are snapshot counts, not unique-animal counts or a clinically eligible cohort denominator. Study period, effect estimates, inferential findings and diagnostic conclusions are not approved in this selection.
+The exact published editorial bundle reports 3,364 Gold report records and 14,245 extraction-event rows. These are snapshot counts, not unique-animal counts or a clinically eligible cohort denominator. Study period, effect estimates, inferential findings and diagnostic conclusions are not approved in this selection.
 
 | Item | Current evidence | Required private verification before a real release |
 |---|---|---|
@@ -25,4 +25,4 @@ The code's synthetic demo demonstrates execution only. Its example counts and gr
 
 ## Current descriptive snapshot
 
-The approved local editorial bundle establishes 3,364 Gold report records and 14,245 extraction-event rows for this snapshot. These do not establish unique animals, independent episodes, a content-deduplicated cohort or clinical eligibility. The workbench protocol and its unresolved items remain relevant for future scientific analyses. Age, period, diagnostic frequencies and inferential results are not in the approved editorial selection.
+The approved published editorial bundle establishes 3,364 Gold report records and 14,245 extraction-event rows for this snapshot. These do not establish unique animals, independent episodes, a content-deduplicated cohort or clinical eligibility. The workbench protocol and its unresolved items remain relevant for future scientific analyses. Age, period, diagnostic frequencies and inferential results are not in the approved editorial selection.
