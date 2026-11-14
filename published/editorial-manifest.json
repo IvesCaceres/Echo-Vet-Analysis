@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "release_id": "DESCRIPTIVE_V1",
+  "kind": "REAL_AGGREGATED",
+  "owner_decision": "APPROVED_FOR_LOCAL_CANDIDATE",
+  "permission_basis": "OWNER_CONFIRMED_AGGREGATE_ONLY",
+  "publication_authorized": false,
+  "files": [
+    {
+      "path": "published/editorial/tables/corpus_volume.csv",
+      "sha256": "67455504a1609619a5962a0434ff22bfd33215ad107834a42d4bd412e8e83cc6",
+      "type": "aggregate_table"
+    },
+    {
+      "path": "published/editorial/tables/species.csv",
+      "sha256": "58974ae1163bab1bf3c7fbe9384a65cf3b3da207481a875dc94277ceebb15656",
+      "type": "aggregate_table"
+    },
+    {
+      "path": "published/editorial/tables/sex.csv",
+      "sha256": "9442b8b9e5252034f394fd4a18d02a1b523c88bcd99de817c85c49d5bd9b6a37",
+      "type": "aggregate_table"
+    },
+    {
+      "path": "published/editorial/tables/field_coverage.csv",
+      "sha256": "1c2714558d2e6f1447b35a8f0eccef8ee4f6ecbff97bc5a1ba9d5f86471002f5",
+      "type": "aggregate_table"
+    },
+    {
+      "path": "published/editorial/figures/species.png",
+      "sha256": "4b1c3100dbffe12470a6fbf56d37f329040c0a98a883b9f8d8ab6e9ad16bb326",
+      "type": "aggregate_figure"
+    },
+    {
+      "path": "published/editorial/figures/sex.png",
+      "sha256": "9a5413fbca58c82a48e12761aea82182f53f863f2a8987710816848eb2cd7b1b",
+      "type": "aggregate_figure"
+    },
+    {
+      "path": "published/editorial/results.md",
+      "sha256": "ffca942b38e67d99dd0bb6c220e17f23f904b2fc7d80a9ab4fddb42c9505390c",
+      "type": "aggregate_text"
+    }
+  ]
+}

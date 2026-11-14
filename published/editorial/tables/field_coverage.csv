@@ -1,0 +1,6 @@
+field,records_with_nonblank_value,records_null_or_blank,denominator_records,nonblank_percentage
+species,3353,11,3364,99.7
+sex,3364,0,3364,100.0
+breed,3203,161,3364,95.2
+study_type,3364,0,3364,100.0
+outcome,3364,0,3364,100.0

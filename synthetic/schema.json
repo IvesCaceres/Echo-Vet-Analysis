@@ -1,0 +1,555 @@
+[
+  {
+    "name": "gold_build_runs_v2",
+    "columns": [
+      {
+        "name": "build_run_id",
+        "type": "TEXT",
+        "pk": 1
+      },
+      {
+        "name": "semantic_version",
+        "type": "TEXT",
+        "pk": 0
+      },
+      {
+        "name": "date_policy_version",
+        "type": "TEXT",
+        "pk": 0
+      },
+      {
+        "name": "gold_schema_version",
+        "type": "TEXT",
+        "pk": 0
+      },
+      {
+        "name": "publication_mode",
+        "type": "TEXT",
+        "pk": 0
+      },
+      {
+        "name": "started_at",
+        "type": "TEXT",
+        "pk": 0
+      },
+      {
+        "name": "finished_at",
+        "type": "TEXT",
+        "pk": 0
+      },
+      {
+        "name": "source_hash_informes",
+        "type": "TEXT",
+        "pk": 0
+      },
+      {
+        "name": "source_hash_silver",
+        "type": "TEXT",
+        "pk": 0
+      },
+      {
+        "name": "semantic_spec_hash",
+        "type": "TEXT",
+        "pk": 0
+      },
+      {
+        "name": "semantic_engine_hash",
+        "type": "TEXT",
+        "pk": 0
+      },
+      {
+        "name": "report_count",
+        "type": "INTEGER",
+        "pk": 0
+      },
+      {
+        "name": "event_count",
+        "type": "INTEGER",
+        "pk": 0
+      },
+      {
+        "name": "validation_status",
+        "type": "TEXT",
+        "pk": 0
+      },
+      {
+        "name": "code_version",
+        "type": "TEXT",
+        "pk": 0
+      }
+    ],
+    "foreign_keys": []
+  },
+  {
+    "name": "dim_clinical_concept_v2",
+    "columns": [
+      {
+        "name": "concept_id",
+        "type": "TEXT",
+        "pk": 1
+      },
+      {
+        "name": "canonical_name",
+        "type": "TEXT",
+        "pk": 0
+      },
+      {
+        "name": "display_name",
+        "type": "TEXT",
+        "pk": 0
+      },
+      {
+        "name": "concept_type",
+        "type": "TEXT",
+        "pk": 0
+      },
+      {
+        "name": "active",
+        "type": "INTEGER",
+        "pk": 0
+      },
+      {
+        "name": "semantic_version",
+        "type": "TEXT",
+        "pk": 0
+      }
+    ],
+    "foreign_keys": []
+  },
+  {
+    "name": "clinical_concept_alias_v2",
+    "columns": [
+      {
+        "name": "alias",
+        "type": "TEXT",
+        "pk": 1
+      },
+      {
+        "name": "concept_id",
+        "type": "TEXT",
+        "pk": 0
+      },
+      {
+        "name": "semantic_version",
+        "type": "TEXT",
+        "pk": 0
+      }
+    ],
+    "foreign_keys": [
+      {
+        "table": "dim_clinical_concept_v2",
+        "from": "concept_id",
+        "to": "concept_id"
+      }
+    ]
+  },
+  {
+    "name": "clinical_concept_taxonomy_v2",
+    "columns": [
+      {
+        "name": "parent_concept_id",
+        "type": "TEXT",
+        "pk": 1
+      },
+      {
+        "name": "child_concept_id",
+        "type": "TEXT",
+        "pk": 2
+      },
+      {
+        "name": "semantic_version",
+        "type": "TEXT",
+        "pk": 0
+      }
+    ],
+    "foreign_keys": [
+      {
+        "table": "dim_clinical_concept_v2",
+        "from": "child_concept_id",
+        "to": "concept_id"
+      },
+      {
+        "table": "dim_clinical_concept_v2",
+        "from": "parent_concept_id",
+        "to": "concept_id"
+      }
+    ]
+  },
+  {
+    "name": "gold_reports_v2",
+    "columns": [
+      {
+        "name": "report_id",
+        "type": "INTEGER",
+        "pk": 1
+      },
+      {
+        "name": "raw_report_id",
+        "type": "INTEGER",
+        "pk": 0
+      },
+      {
+        "name": "patient_name",
+        "type": "TEXT",
+        "pk": 0
+      },
+      {
+        "name": "species",
+        "type": "TEXT",
+        "pk": 0
+      },
+      {
+        "name": "breed",
+        "type": "TEXT",
+        "pk": 0
+      },
+      {
+        "name": "sex",
+        "type": "TEXT",
+        "pk": 0
+      },
+      {
+        "name": "age_text",
+        "type": "TEXT",
+        "pk": 0
+      },
+      {
+        "name": "study_type",
+        "type": "TEXT",
+        "pk": 0
+      },
+      {
+        "name": "study_date",
+        "type": "TEXT",
+        "pk": 0
+      },
+      {
+        "name": "study_year",
+        "type": "INTEGER",
+        "pk": 0
+      },
+      {
+        "name": "study_month",
+        "type": "INTEGER",
+        "pk": 0
+      },
+      {
+        "name": "study_day",
+        "type": "INTEGER",
+        "pk": 0
+      },
+      {
+        "name": "study_date_raw",
+        "type": "TEXT",
+        "pk": 0
+      },
+      {
+        "name": "date_interval_start",
+        "type": "TEXT",
+        "pk": 0
+      },
+      {
+        "name": "date_interval_end",
+        "type": "TEXT",
+        "pk": 0
+      },
+      {
+        "name": "date_precision",
+        "type": "TEXT",
+        "pk": 0
+      },
+      {
+        "name": "date_source",
+        "type": "TEXT",
+        "pk": 0
+      },
+      {
+        "name": "date_quality",
+        "type": "TEXT",
+        "pk": 0
+      },
+      {
+        "name": "outcome",
+        "type": "TEXT",
+        "pk": 0
+      },
+      {
+        "name": "semantic_version",
+        "type": "TEXT",
+        "pk": 0
+      },
+      {
+        "name": "source_document",
+        "type": "TEXT",
+        "pk": 0
+      },
+      {
+        "name": "source_path",
+        "type": "TEXT",
+        "pk": 0
+      },
+      {
+        "name": "generated_at",
+        "type": "TEXT",
+        "pk": 0
+      }
+    ],
+    "foreign_keys": []
+  },
+  {
+    "name": "gold_clinical_events_v2",
+    "columns": [
+      {
+        "name": "event_id",
+        "type": "TEXT",
+        "pk": 1
+      },
+      {
+        "name": "report_id",
+        "type": "INTEGER",
+        "pk": 0
+      },
+      {
+        "name": "concept_id",
+        "type": "TEXT",
+        "pk": 0
+      },
+      {
+        "name": "canonical_concept",
+        "type": "TEXT",
+        "pk": 0
+      },
+      {
+        "name": "assertion_status",
+        "type": "TEXT",
+        "pk": 0
+      },
+      {
+        "name": "relation_type",
+        "type": "TEXT",
+        "pk": 0
+      },
+      {
+        "name": "strength",
+        "type": "TEXT",
+        "pk": 0
+      },
+      {
+        "name": "descriptor_json",
+        "type": "TEXT",
+        "pk": 0
+      },
+      {
+        "name": "severity",
+        "type": "TEXT",
+        "pk": 0
+      },
+      {
+        "name": "laterality",
+        "type": "TEXT",
+        "pk": 0
+      },
+      {
+        "name": "location",
+        "type": "TEXT",
+        "pk": 0
+      },
+      {
+        "name": "amount",
+        "type": "TEXT",
+        "pk": 0
+      },
+      {
+        "name": "source_span_start",
+        "type": "INTEGER",
+        "pk": 0
+      },
+      {
+        "name": "source_span_end",
+        "type": "INTEGER",
+        "pk": 0
+      },
+      {
+        "name": "source_text",
+        "type": "TEXT",
+        "pk": 0
+      },
+      {
+        "name": "source_clause",
+        "type": "TEXT",
+        "pk": 0
+      },
+      {
+        "name": "source_type",
+        "type": "TEXT",
+        "pk": 0
+      },
+      {
+        "name": "event_origin",
+        "type": "TEXT",
+        "pk": 0
+      },
+      {
+        "name": "semantic_version",
+        "type": "TEXT",
+        "pk": 0
+      },
+      {
+        "name": "rule_id",
+        "type": "TEXT",
+        "pk": 0
+      }
+    ],
+    "foreign_keys": [
+      {
+        "table": "dim_clinical_concept_v2",
+        "from": "concept_id",
+        "to": "concept_id"
+      },
+      {
+        "table": "gold_reports_v2",
+        "from": "report_id",
+        "to": "report_id"
+      }
+    ]
+  },
+  {
+    "name": "gold_event_provenance_v2",
+    "columns": [
+      {
+        "name": "event_id",
+        "type": "TEXT",
+        "pk": 1
+      },
+      {
+        "name": "provenance_order",
+        "type": "INTEGER",
+        "pk": 2
+      },
+      {
+        "name": "source_type",
+        "type": "TEXT",
+        "pk": 0
+      },
+      {
+        "name": "source_row_id",
+        "type": "INTEGER",
+        "pk": 0
+      },
+      {
+        "name": "source_field",
+        "type": "TEXT",
+        "pk": 0
+      },
+      {
+        "name": "source_hash",
+        "type": "TEXT",
+        "pk": 0
+      },
+      {
+        "name": "rule_id",
+        "type": "TEXT",
+        "pk": 0
+      },
+      {
+        "name": "discarded",
+        "type": "INTEGER",
+        "pk": 0
+      },
+      {
+        "name": "discard_reason",
+        "type": "TEXT",
+        "pk": 0
+      }
+    ],
+    "foreign_keys": [
+      {
+        "table": "gold_clinical_events_v2",
+        "from": "event_id",
+        "to": "event_id"
+      }
+    ]
+  },
+  {
+    "name": "gold_discarded_event_provenance_v2",
+    "columns": [
+      {
+        "name": "discarded_provenance_id",
+        "type": "TEXT",
+        "pk": 1
+      },
+      {
+        "name": "report_id",
+        "type": "INTEGER",
+        "pk": 0
+      },
+      {
+        "name": "kept_event_id",
+        "type": "TEXT",
+        "pk": 0
+      },
+      {
+        "name": "canonical_concept",
+        "type": "TEXT",
+        "pk": 0
+      },
+      {
+        "name": "assertion_status",
+        "type": "TEXT",
+        "pk": 0
+      },
+      {
+        "name": "relation_type",
+        "type": "TEXT",
+        "pk": 0
+      },
+      {
+        "name": "source_span_start",
+        "type": "INTEGER",
+        "pk": 0
+      },
+      {
+        "name": "source_span_end",
+        "type": "INTEGER",
+        "pk": 0
+      },
+      {
+        "name": "source_text",
+        "type": "TEXT",
+        "pk": 0
+      },
+      {
+        "name": "source_rule",
+        "type": "TEXT",
+        "pk": 0
+      },
+      {
+        "name": "discard_reason",
+        "type": "TEXT",
+        "pk": 0
+      },
+      {
+        "name": "provenance_status",
+        "type": "TEXT",
+        "pk": 0
+      },
+      {
+        "name": "semantic_version",
+        "type": "TEXT",
+        "pk": 0
+      },
+      {
+        "name": "build_run_id",
+        "type": "TEXT",
+        "pk": 0
+      }
+    ],
+    "foreign_keys": [
+      {
+        "table": "gold_clinical_events_v2",
+        "from": "kept_event_id",
+        "to": "event_id"
+      }
+    ]
+  }
+]
