@@ -50,6 +50,14 @@ With dependencies already approved/available, use that Python executable instead
 
 ## Expected checks and next inspection
 
+Before running the plotting notebooks in a fresh environment, initialize Matplotlib's font cache once using the same environment's Python executable:
+
+```bash
+python -B -c "import matplotlib.pyplot; import matplotlib.font_manager as fm; fm.findfont('DejaVu Sans')"
+```
+
+This loads installed plotting dependencies, not clinical data. On a clean Linux system font discovery can start a local process; the restricted notebook runner intentionally blocks that operation. CI therefore initializes the cache before entering the runner. Keep `MPLCONFIGDIR`, if explicitly configured, outside the exported source and use the same setting for initialization and execution. Do not weaken the runner's process/network restrictions.
+
 Tests should end with `Ran 35 tests` and `OK`; the validator prints JSON containing `"status": "PASS"` and `"issues": []`. The inventory runner prints `"status": "PASS"`, `"code_cells": 13`, `"mode": "PUBLIC_DEMO"` and `"outputs_saved_in_notebook": false`. No scientific conclusion follows from PASS.
 
 The runner suppresses cell stdout/stderr, executes sequential code cells and does not persist notebook outputs. Its message confirms completion, not that it displayed tables. Start by inspecting the generator, the notebook source and `published/editorial/tables/species.csv` alongside the results document.
