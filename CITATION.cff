@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "Please cite this software and identify the exact Git commit used. This citation does not grant reuse rights to the separately governed editorial assets."
+type: software
+title: Echo-Vet-Analysis
+authors:
+  - family-names: "Cáceres"
+    given-names: "Ives"
+repository-code: "https://github.com/IvesCaceres/Echo-Vet-Analysis"
+url: "https://github.com/IvesCaceres/Echo-Vet-Analysis"
+license: MIT

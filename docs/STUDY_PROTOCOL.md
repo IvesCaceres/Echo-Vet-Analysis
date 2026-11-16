@@ -1,28 +1,41 @@
-# Study protocol and claims register — verification pending
+# Study protocol and claims register
 
-The exact published editorial bundle reports 3,364 Gold report records and 14,245 extraction-event rows. These are snapshot counts, not unique-animal counts or a clinically eligible cohort denominator. Study period, effect estimates, inferential findings and diagnostic conclusions are not approved in this selection.
+## Published descriptive results
 
-| Item | Current evidence | Required private verification before a real release |
+The approved editorial selection describes a fixed snapshot of **3,364 Gold report records**, with 3,364 distinct report keys, and **14,245 extraction-event rows**. It contains species and sex distributions and nonblank coverage of five fields. Both distributions and each field-coverage calculation use all 3,364 Gold records; categories and rounding are documented in [the exact results](../published/editorial/results.md).
+
+These are snapshot counts, not unique animals, independent episodes, a deduplicated cohort or a clinically eligible study population. No records were corrected or deduplicated for this selection. The period, age/time summaries, diagnostic frequencies and inferential findings are not included or approved here.
+
+| Item | Evidence for the published selection | Remaining limit |
 |---|---|---|
-| Unit | Code uses report-level and event-level structures | Define report, examination, animal and event; do not equate them |
-| Sample size | Approximate corpus size stated by owner | Exact eligible report counts, exclusions, missingness and analysis-specific N |
-| Period | Source code includes temporal analyses | Verify actual dates/coverage privately; do not infer range from filenames or code constants; publish only reviewed granularity |
-| Inclusion | Method-lock/specification and eligibility scripts exist | Freeze criteria, study types, species and handling of unavailable variables before estimating |
-| Duplicates/repeated observations | Event and report distinction exists | Distinguish duplicate events, duplicate documents, follow-ups and repeated reports per animal. Names alone do not establish identity |
-| Variables | Gold concepts, assertion states, demographics and canonical resolution artifacts | Versioned definitions, mapping/rule changes, validation limits and unresolved/ambiguous states |
-| Denominators | Denominator-freeze and concept-eligibility code exists | Concept/organ eligibility, reports vs events, subgroup missingness, mutually exclusive vs overlapping categories |
-| Uncertainty | Wilson intervals, tests and model calls appear in source | Assumptions, uncertainty interpretation, dependence/clustering and model adequacy |
-| Comparisons | Chi-square/Fisher, Logit/GLM and multiple-testing code exists | Prespecified questions, effect sizes, sparse cells, convergence/separation and multiplicity families |
-| Selection | Professionally supplied clinical corpus, not a demonstrated population sample | Referral/indication, geographic/service coverage, case mix and time-dependent ascertainment |
-| Missing data | Data-quality and demographic readiness analyses exist | Missingness definitions, complete-case vs other strategies and denominators per table |
-| Scientific claims | No result values reviewed in this phase | Trace each claim to a private versioned analysis and a reviewed aggregate output |
+| Unit | Gold report record and extraction-event row, separately counted | Unique animals and independent examinations/episodes are not established |
+| Sample size | Exactly 3,364 records in the descriptive snapshot | This is not an eligible denominator for every future question |
+| Species and sex | Predefined coding with case/whitespace normalization; unresolved/missing/non-specified categories retained | Coding is not clinical validation; no imputation into confirmed categories |
+| Coverage | Non-null/nonblank presence of species, sex, breed, study type and outcome | Marginal syntactic presence is not joint completeness, correctness or a validated outcome |
+| Selection | Professionally supplied clinical corpus | Population sampling frame, referral patterns and representativeness remain unverified |
+| Duplication | Distinct report keys within the snapshot | Content duplicates, repeat animals and follow-up episodes may remain |
+| Permission and review | Owner-confirmed aggregate-only permission; seven exact-file approvals and separate publication authorization | Not blanket permission or independent verification of every right; see RESULTS_PROVENANCE.md |
 
-Prefer wording such as “observed frequency among eligible reports in this corpus.” Population prevalence, incidence, causal effects, clinical validation and generalization beyond the sampled setting need evidence not established here. Repeated reports may violate independence assumptions; a binomial confidence interval or regression call is not proof that those assumptions hold.
+## Future / not-yet-approved analyses
 
-Real outcomes must stay associated privately with snapshot identities, canonical resolution versions, query/code versions, parameters, exclusions and scientific decisions. Public metadata should explain the method and limitations without revealing paths, per-record hashes or identifying details.
+| Question or analysis | Required verification before any new real output |
+|---|---|
+| Study period and age summaries | Verify dates, coverage, parsing and safe publication granularity privately; do not infer dates from filenames |
+| Clinical inclusion/exclusion | Freeze study types, eligibility and analysis-specific N before estimation |
+| Diagnostic/concept frequencies | Freeze canonical mappings, assertion states, unresolved coverage and report-versus-event denominators |
+| Group comparisons | Review independence, repeated reports, sparse cells, effect sizes and multiplicity |
+| Uncertainty intervals | Establish appropriate sampling/dependence assumptions; a Wilson interval alone does not justify generalization |
+| Multivariable/sensitivity analyses | Review missingness, clustering, convergence, separation, robustness and disclosure jointly |
+| Additional public tables/figures | Review linked margins, complements, known prior disclosures, exact files and residual risk; obtain separate approval |
 
-The code's synthetic demo demonstrates execution only. Its example counts and graphs are never scientific evidence for the real cohort. A future results section should cite only REAL_AGGREGATED releases approved for that exact content.
+The private procedures mentioned in earlier inventories are not supplied or executed by this public repository. Their presence in an inventory does not demonstrate validity or successful execution. [STATISTICAL_ANALYSES.md](STATISTICAL_ANALYSES.md) identifies availability.
 
-## Current descriptive snapshot
+## Interpretation and traceability
 
-The approved published editorial bundle establishes 3,364 Gold report records and 14,245 extraction-event rows for this snapshot. These do not establish unique animals, independent episodes, a content-deduplicated cohort or clinical eligibility. The workbench protocol and its unresolved items remain relevant for future scientific analyses. Age, period, diagnostic frequencies and inferential results are not in the approved editorial selection.
+Prefer ?observed frequency among records in this corpus.? Population prevalence, incidence, causal effects, diagnostic accuracy and clinical validation are not established. Keep original snapshot identities, rules, queries, parameters, exclusions, outputs and decisions in authorized private storage. Public documentation must not reveal per-record hashes, paths or identifiers.
+
+Synthetic fixtures demonstrate software execution only. They do not reproduce the real snapshot's statistics or supply evidence about a clinical population.
+
+## Historical status note
+
+Earlier versions of this register described an approximate owner-stated corpus size and said that no result values had been reviewed ?in this phase.? Those statements recorded a pre-editorial planning stage. They do not describe the current seven-file published selection. The original wording remains in Git history; this update changes current documentation, not the historical approval record or any approved artifact. All unapproved future analyses remain pending.

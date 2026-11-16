@@ -31,3 +31,15 @@ The earlier aggregate_release.py JSON-package prototype remains available for de
 - tests/: invented fixtures and failure-mode checks.
 
 See DISCLOSURE_POLICY.md and published/editorial/results.md. Passing tests does not establish clinical validity or permission for GitHub publication.
+
+## Reusing the separation on another sensitive corpus
+
+The following is an invented, nonclinical example; it is not a description or statistic of the veterinary corpus and creates no new approved artifact.
+
+1. **Conceptual private dataset:** an authorized organization holds 40 fictional maintenance tickets with internal ticket IDs and free-text notes. Both stay private. Define the unit as one ticket, not a person or repair event.
+2. **Private extraction:** map each ticket into a reviewed category vocabulary, `ROUTINE` or `FOLLOW_UP`. Record unresolved/missing cases separately if they occur. Freeze definitions and provenance privately before aggregation.
+3. **Private aggregation:** the fictional counts are 24 ROUTINE and 16 FOLLOW_UP, with denominator 40. Only category code, count, denominator and rounded percentage enter the proposed aggregate stage. IDs and free text never enter a public package.
+4. **Publication control:** validate the predefined schema and partitions; inspect small cells and complements, linked tables and known prior releases. A preliminary numerical threshold alone cannot approve disclosure. A methodology/privacy reviewer and the owner decide on the exact content. For contrast, changing the invented counts to 39 and 1 would fail the small-cell/complement screen and withhold the entire package, including totals and percentages; a hidden cell could otherwise be reconstructed.
+5. **Potential public artifact:** only after separate approval, publish a two-row aggregate table, methods/limits and exact hashes. Publish a separate synthetic fixture for executable demonstrations; never relabel it as real evidence.
+
+This example illustrates a reusable boundary, not a general-purpose anonymization algorithm. `aggregate_release.py` is a generic JSON-package prototype with synthetic tests; it does not locate clinical data or automatically approve publication. The fixed seven-file CSV editorial bundle uses a different exact-file allowlist. Adapt schema, units, approval responsibilities and cross-release review to the new context; do not copy the existing approval manifest or assume its thresholds fit another corpus.

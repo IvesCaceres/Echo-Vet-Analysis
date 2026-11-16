@@ -24,3 +24,20 @@ This repository includes the exact seven-file editorial aggregate bundle, approv
 ## Current exact editorial bundle
 
 The seven files under published/editorial/ now reproduce only the owner-approved aggregate selection, with no new clinical query. The four workbench methods remain distinct from these fixed results. The auxiliary fifth viewer was adapted to read this exact hash-reviewed bundle or invented examples; it has no clinical connector. See published/editorial/results.md for the current final descriptive methods and limits. The generic JSON-package prototype remains separate from the exact CSV editorial bundle.
+
+## Public table traceability
+
+This map documents the existing approved selection; it is not a new calculation or a claim that the public notebooks generated its exact values. All paths below are public. The private read-only source procedure, query versions, snapshot identity and review decisions must be retained privately. A complete public query-to-artifact reproduction script is not provided.
+
+| Public table | Definition | Denominator | Procedure of origin |
+|---|---|---|---|
+| `published/editorial/tables/corpus_volume.csv` | 3,364 Gold report records and 14,245 extraction-event rows, counted as separate units | Not applicable to these snapshot totals; neither is a unique-animal denominator | Prior authorized read-only inventory/counts of the fixed Gold snapshot; verified aggregate volume artifact reused without re-querying clinical data |
+| `published/editorial/tables/species.csv` | Predefined canine/feline labels, plus explicitly unresolved and null/blank categories, with case/whitespace normalization | All 3,364 Gold report records, including unresolved and missing values; percentages rounded to one decimal | Prior private descriptive aggregation and coding review; selected aggregate table reused as approved; no species inferred from unresolved codes |
+| `published/editorial/tables/sex.csv` | Male/female and predefined non-specification codes; null/blank retained separately | All 3,364 Gold report records; percentages rounded to one decimal | Prior private descriptive aggregation with code interpretation reviewed; no non-specified value imputed as male or female |
+| `published/editorial/tables/field_coverage.csv` | Count of non-null/nonblank values for five predeclared fields | Each field uses all 3,364 Gold records; complements count null/blank values | Prior private field-presence aggregation; reviewed marginal summaries reused, not a joint-completeness calculation |
+
+The two approved PNGs visualize the species/sex aggregate counts. The approved `published/editorial/results.md` interprets those same tables and limits. Their numerical lineage does not require or permit individual records in public figures. All seven artifacts are checked byte-for-byte against `published/editorial-manifest.json`; a hash verifies artifact identity, not the original scientific query or privacy safety.
+
+### Workbench methods are not editorial definitions
+
+For example, the public demographic workbench's `dist()` drops null values and uses available observations for some exploratory distributions. The editorial species/sex tables instead retain missing/unresolved categories in the full-record denominator. Public workbench execution is useful for inspection of methods on synthetic data; it is not an exact real-corpus recalculation route. Adapting it to real inputs requires the original frozen definitions, mappings and review. Do not relabel its exploratory results as the approved editorial selection.

@@ -38,3 +38,18 @@ The original file names use “prevalence.” Public interpretation should norma
 5. Review adjusted models and sensitivity results separately; do not publish private diagnostics or fitted values.
 
 The published editorial bundle includes owner-approved descriptive results for 3,364 Gold records and 14,245 event rows. Unique animals, eligible clinical cohorts, period, clinical conclusions, confidence intervals, significance and model coefficients remain unverified or excluded. No inferential or diagnostic release is approved.
+
+## Availability guide for an external reader
+
+| Material | Availability | What an external reader can do |
+|---|---|---|
+| `analysis/00_gold_v2_inventory.py` through `analysis/03_event_consistency_audit.py` | Public Python workbench exports | Inspect the included calculations; execute with synthetic configuration through the documented notebook route |
+| Four corresponding workbench notebooks under `notebooks/` | Public; no saved outputs | Run invented fixtures by default; never save real private outputs into Git |
+| `notebooks/10_reviewed_aggregate_results.ipynb` | Public aggregate-only viewer | Inspect invented examples or the fixed reviewed public CSV bundle without a clinical connection |
+| `scripts/`, `synthetic/schema.json`, `tests/` | Public | Generate compatible invented examples and inspect configuration/release checks |
+| `published/editorial/` | Public approved artifacts | Read descriptive results and verify the seven hashes; editorial reuse terms remain pending |
+| Real Gold snapshot, reports, individual derivatives, canonical resolution tables and frozen clinical rule/query versions | Private and not distributed | Required, with authorization and original procedures, for a real-corpus recalculation; not needed for the public demo |
+
+Names in the ?Original analyses worth reviewing? table, including `clinical_prevalence.py`, `rebuild_clinical_prevalence.py`, `assertion_specific_prevalence.py`, `denominator_demographic_freeze.py`, `run_primary_inferential_statistics.py`, `run_multivariable_models.py` and the original `11b` notebook, are **references to the private source project, not downloadable paths in this repository**. They are an inventory of potential future work, not public installation dependencies or verified scientific outputs. Do not try to reconstruct or download private inputs from those names.
+
+For the current descriptive selection, consult the table-level map in METHODS.md. Its prior private procedures and frozen mappings are distinct from the public exploratory workbenches. No new clinical computation is needed to inspect the approved public bundle.
